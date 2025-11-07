@@ -68,7 +68,8 @@ public class Sandwich extends Product{
 
     @Override
     public String getDescription() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        
     }
 }
 

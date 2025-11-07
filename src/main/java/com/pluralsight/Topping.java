@@ -1,7 +1,6 @@
 package com.pluralsight;
 /*
  * This class stores toppings.
- * Meat and cheese cost extra, regular toppings are free.
  */
 public class Topping {
     //Meat toppings (premium)

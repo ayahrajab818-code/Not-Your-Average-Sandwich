@@ -69,10 +69,12 @@ public class Sandwich extends Product{
     @Override
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
-        sb.append(size).append("\"")
-                .append(bread).append("(Tosted: ")
-                .append(toasted)
-                .append(")\nToppings: ");
+        sb.append(size)//add the size
+                .append("\" ")
+                .append(bread) //add bread type
+                .append("(Toasted: ")
+                .append(toasted) //add true/false if toasted
+                .append(")\nToppings: "); //closes parenthesis, new line, then "Toppings:"
         for(ToppingItem t : toppings){
     }
 }

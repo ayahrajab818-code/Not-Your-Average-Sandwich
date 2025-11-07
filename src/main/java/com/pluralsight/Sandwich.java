@@ -65,11 +65,15 @@ public class Sandwich extends Product{
         }
 
 
-
+    //Return description for receipt
     @Override
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
-        
+        sb.append(size).append("\"")
+                .append(bread).append("(Tosted: ")
+                .append(toasted)
+                .append(")\nToppings: ");
+        for(ToppingItem t : toppings){
     }
 }
 

@@ -2,12 +2,12 @@ package com.pluralsight;
 
 public class ToppingItem {
     private String name;
-    private String type; //Topping type: MEAT, CHEESE, REGULAR, SAUCE
+    private String category ; //Topping type: MEAT, CHEESE, REGULAR, SAUCE
     private boolean extra; //True if customer wants extra amount
 
-    public ToppingItem(String name, String type, boolean extra) {
+    public ToppingItem(String name, String category , boolean extra) {
         this.name = name;
-        this.type = type;
+        this.category  = category ;
         this.extra = extra;
     }
 
@@ -19,12 +19,12 @@ public class ToppingItem {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory () {
+        return category ;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory (String category ) {
+        this.category  = category ;
     }
 
     public boolean isExtra() {

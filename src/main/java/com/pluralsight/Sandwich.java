@@ -41,18 +41,28 @@ public class Sandwich extends Product{
                     base = 0;  //Unknown size results in zero charge
                     break;
             }
-            // Start calculating total with the base sandwich price
+            //Start calculating total with the base sandwich price
             double total = base;
 
-            // Loop through selected sandwich toppings
+            //Loop through selected sandwich toppings
             for (ToppingItem t : toppings) {
-                // Price rules for MEAT toppings
+                //Prices for MEAT toppings
                 if(t.getCategory().equals("MEAT")) {
-                    // Cost varies by sandwich size and whether it's an extra portion
+                    //Cost varies by sandwich size and whether it's an extra portion
                     if(size.equals("4")) total += t.isExtra() ? 0.50 : 1.00;
                     else if(size.equals("8")) total += t.isExtra() ? 1.00 : 2.00;
                     else if(size.equals("12")) total += t.isExtra() ? 1.50 : 3.00;
-                
+                }
+                //Price rules for CHEESE toppings
+                else if(t.getCategory().equals("CHEESE")) {
+                    if(size.equals("4")) total += t.isExtra() ? 0.30 : 0.75;
+                    else if(size.equals("8")) total += t.isExtra() ? 0.60 : 1.50;
+                    else if(size.equals("12")) total += t.isExtra() ? 0.90 : 2.25;
+                }
+            }
+            //Return the final sandwich price
+            return total;
+        }
 
 
 

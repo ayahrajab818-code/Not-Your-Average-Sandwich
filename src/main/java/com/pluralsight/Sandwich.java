@@ -44,7 +44,15 @@ public class Sandwich extends Product{
             // Start calculating total with the base sandwich price
             double total = base;
 
-
+            // Loop through selected sandwich toppings
+            for (ToppingItem t : toppings) {
+                // Price rules for MEAT toppings
+                if(t.getCategory().equals("MEAT")) {
+                    // Cost varies by sandwich size and whether it's an extra portion
+                    if(size.equals("4")) total += t.isExtra() ? 0.50 : 1.00;
+                    else if(size.equals("8")) total += t.isExtra() ? 1.00 : 2.00;
+                    else if(size.equals("12")) total += t.isExtra() ? 1.50 : 3.00;
+                
 
 
 

@@ -32,4 +32,7 @@ public class Topping {
             "Mushrooms"
     };
 
+    //reuse Sauce options
+    public static String[] SAUCES = Sauce.SAUCES;
 }
+

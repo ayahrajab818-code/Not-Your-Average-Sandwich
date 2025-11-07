@@ -20,5 +20,16 @@ public class Topping {
             "Swiss"
     };
 
-    
+    public static String[] REGULAR = {
+            "Lettuce",
+            "Peppers",
+            "Onions",
+            "Tomatoes",
+            "Jalapeños",
+            "Cucumbers",
+            "Pickles",
+            "Guacamole",
+            "Mushrooms"
+    };
+
 }

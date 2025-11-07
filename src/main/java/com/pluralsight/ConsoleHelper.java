@@ -25,54 +25,34 @@ public class ConsoleHelper {
     }
 
 
-    public static double promptForDouble(String prompt) {
+
+    //I used a string here because it's a plain text
+    public static String promptForString(String prompt) {
         while (true) {
-            try {
-                System.out.print(prompt + ": ");
-                String input = scanner.nextLine();
-                return Double.parseDouble(input);  // Convert text to double
-            } catch (NumberFormatException e) {
-                System.out.println(" Invalid input! Please enter a number");
+            System.out.print(prompt + ": ");
+            String input = scanner.nextLine().trim(); // Read input and remove extra spaces
+
+            if (!input.isEmpty()) {
+                return input;  // Return valid text
+            } else {
+                System.out.println("Invalid input! Please enter text.");
             }
         }
     }
 
-        //I used a string here because it's a plain text
-        public static String promptForString(String prompt) {
-            while (true) {
-                System.out.print(prompt + ": ");
-                String input = scanner.nextLine().trim(); // Read input and remove extra spaces
 
-                if (!input.isEmpty()) {
-                    return input;  // Return valid text
-                } else {
-                    System.out.println("Invalid input! Please enter text.");
-                }
-            }
-        }
-
-    public static LocalDate promptForDate(String prompt){
-
-        while(true){
-            try{
-                System.out.print(prompt + ": ");
-                String dateAsString = scanner.nextLine();
-                return LocalDate.parse(dateAsString);
-            }
-            catch(Exception ex){
-                System.out.println("Invalid Entry, please enter a valid date (YYYY-MM-DD)");
-            }
-        }
-    }
-    //I used localTime here because is a spacial java class the understanding times
-    public static LocalTime promptForTime(String prompt){
+    /*
+     * Prompt the user with a yes/no question
+     * Returns true if user enters Y/y
+     */
+    public static boolean promptForYesNo(String prompt) {
         while (true) {
             try {
-                System.out.print(prompt + ": ");
-                String timeAsString = scanner.nextLine();
-                return LocalTime.parse(timeAsString);
+                System.out.print(prompt + " (Y/N): ");
+                String input = scanner.nextLine().trim();
+                return input.equalsIgnoreCase("Y");
             } catch (Exception ex) {
-                System.out.println("Invalid Entry, please enter a valid time (HH:MM:SS)");
+                System.out.println("Invalid Entry, please enter (y/n) ");
             }
         }
     }

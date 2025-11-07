@@ -12,4 +12,13 @@ public class Topping {
             "Chicken",
             "Bacon"
     };
+
+    public static String[] CHEESES = {
+            "American",
+            "Provolone",
+            "Cheddar",
+            "Swiss"
+    };
+
+    
 }

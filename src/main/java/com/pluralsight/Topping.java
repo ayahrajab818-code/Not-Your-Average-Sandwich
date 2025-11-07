@@ -3,6 +3,7 @@ package com.pluralsight;
  * This class stores toppings.
  */
 public class Topping {
+
     //Meat toppings (premium)
     public static String[] MEATS = {
             "Steak",

@@ -4,6 +4,7 @@ package com.pluralsight;
  * Meat and cheese cost extra, regular toppings are free.
  */
 public class Topping {
+    //Meat toppings (premium)
     public static String[] MEATS = {
             "Steak",
             "Ham",
@@ -12,14 +13,14 @@ public class Topping {
             "Chicken",
             "Bacon"
     };
-
+    //Cheese toppings (premium)
     public static String[] CHEESES = {
             "American",
             "Provolone",
             "Cheddar",
             "Swiss"
     };
-
+    //Regular toppings (free)
     public static String[] REGULAR = {
             "Lettuce",
             "Peppers",

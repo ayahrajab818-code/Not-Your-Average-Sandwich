@@ -11,7 +11,7 @@ public class Order {
         entry.add(p);
     }
     //Return list of products
-    public ArrayList<Product> getItems(){
+    public ArrayList<Product> getEntry(){
         return entry;
     }
 

@@ -21,6 +21,11 @@ public class ReceiptFile {
             DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             w.write("=== Not-Your-Average-Sandwich Receipt ===\n");
             w.write("Order Date/Time: " + now.format(displayFormat) + "\n\n");
+
+            // Write each product
+            for(Product p : o.getEntry()){
+                w.write(p.getDescription() + " - $" + p.getPrice() + "\n");
+            }
         }
     }
 

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class HomeScreen {
 
-    //------Main Menu here-----
+    //--------- Main Menu here --------------//
     public static void main(String[] args) {
 
         String homeMenu = """
@@ -20,8 +20,8 @@ public class HomeScreen {
                    ==============================
              //------------Main Menu------------//      
                 What do you want to do?
-                1) New Order
-                0) Exit
+                N) New Order
+                X) Exit
                 """;
         while (true) {
             System.out.println(homeMenu);
@@ -75,7 +75,7 @@ public class HomeScreen {
     }
 
 
-    //Method to create a sandwich with user input
+    //---------------------- Method to create a sandwich with user input -------------------//
     private static Product addSandwich() {
         System.out.println("\n--- Add Sandwich ---");
         //Variable to store bread choice
@@ -189,7 +189,7 @@ public class HomeScreen {
     }
 
 
-    //Method to create a drink
+    //------------------ Method to create a drink -------------------//
     private static Product addDrink() {
         System.out.println("\n--- Add Drink ---");
 
@@ -200,7 +200,7 @@ public class HomeScreen {
     }
 
 
-    //Method to create chips
+    //----------------- Method to create chips ------------------//
     private static Product addChips() {
         System.out.println("\n--- Add Chips ---");
         String flavor = ConsoleHelper.promptForString("what's your chips flavor");
@@ -209,12 +209,32 @@ public class HomeScreen {
         return new Chips(flavor);
     }
 
-    private static Product addSignatureSandwich(){
 
+    //----------------- Method to create Signature Sandwich ------------------//
+    private static Product addSignatureSandwich(){
+        System.out.println("\n--- Signature Sandwich ---");
+
+        int command;
+        while(true){
+            System.out.println("Choose a signature sandwich");
+            System.out.println("1) BLT");
+            System.out.println("2) Philly Cheese Steak");
+
+            command = ConsoleHelper.promptForInt("Please entre your choice (1 or 2)");
+            if(command == 1 || command == 2) break;
+            System.out.println("Invalid choice! Please select 1 or 2.");
+        }
+        Sandwich s;
+        if(command == 1) s = new BLT(); //Create BLT sandwich
+        else s = new PhillyCheeseSteak(); //Create Philly Cheese Steak
+
+
+        System.out.println("Signature sandwich has been selected!");
+        return s;
     }
 
 
-    //Checkout method to show summary and save receipt
+    //------------------ Checkout method to show summary and save receipt --------------------//
     private static void checkout(Order o) {
         //Get current date/time
         LocalDateTime now = LocalDateTime.now();

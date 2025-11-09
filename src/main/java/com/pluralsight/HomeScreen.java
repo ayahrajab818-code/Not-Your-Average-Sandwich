@@ -1,6 +1,10 @@
 package com.pluralsight;
 
 
+import com.pluralsight.models.*;
+import com.pluralsight.orders.Order;
+import com.pluralsight.orders.ReceiptFile;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,41 +14,36 @@ public class HomeScreen {
     public static void main(String[] args) {
 
         String homeMenu = """
-                //------------Main Menu------------//
-                ========================
+                    ============================
+                          Welcome to our 
+                       NOT-YOU-AVERAGE-SANDWICH
+                   ==============================
+             //------------Main Menu------------//      
                 What do you want to do?
                 1) New Order
                 0) Exit
-                =======================
                 """;
-
         while (true) {
             System.out.println(homeMenu);
-            String command = ConsoleHelper.promptForString("Enter command (N, X) ").toUpperCase();
-
+            String command = ConsoleHelper.promptForString("Enter command (N, X)").toUpperCase();
             switch (command) {
-
-                //Start new order
-                case "N" -> {
+                case "N" -> {//Start new order
                     Order o = new Order();
                     boolean running = true;
-
                     String orderMenu = """
-                            //------------Order Menu------------//
-                            ========================
-                            What would you like to add?
-                            1) Add Sandwich
-                            2) Add Drink
-                            3) Add Chips
-                            4) Checkout
-                            0) Cancel Order
-                            =======================
-                            """;
-
+                    //------------------------//        
+                            Order Menu
+                 //------------------------//         
+                    What would you like to add?
+                    1) Add Sandwich
+                    2) Add Drink
+                    3) Add Chips
+                    4) Checkout
+                    0) Cancel Order
+                    """;
                     while (running) {
                         System.out.println(orderMenu);
-                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0) ").toUpperCase();
-
+                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0)").toUpperCase();
                         switch (c) {
                             case "1" -> o.add(addSandwich());
                             case "2" -> o.add(addDrink());
@@ -60,7 +59,6 @@ public class HomeScreen {
                             default -> System.out.println("INVALID COMMAND! Please try again.");
                         }
                     }
-
                 }
                 case "X" -> {
                     System.out.println("Exiting application..."); // Notify user
@@ -86,7 +84,7 @@ public class HomeScreen {
                 System.out.println((i + 1) + ") " + BreadType.TYPES[i]);//Display option
             }
 
-            breadChoice = ConsoleHelper.promptForInt("Select your bread # ");
+            breadChoice = ConsoleHelper.promptForInt("Select your bread #");
 
             if (breadChoice >= 1 && breadChoice <= BreadType.TYPES.length) {
                 break;
@@ -100,7 +98,7 @@ public class HomeScreen {
         //Ask the user for the sandwich size (4, 8, or 12 inches)
         String size;
         while (true) {
-         size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches) ");
+         size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches)");
 
         if (size.equals("4") || size.equals("8") || size.equals("12")) {
             break;
@@ -111,7 +109,7 @@ public class HomeScreen {
         //Variable to store toasted choice
         boolean toasted;
         while (true) {
-        String t = ConsoleHelper.promptForString("Toasted? (Y/N) ");
+        String t = ConsoleHelper.promptForString("Toasted? (Y/N)");
             if (t.equalsIgnoreCase("Y")) {
                 toasted = true;
                 break;
@@ -157,14 +155,25 @@ public class HomeScreen {
 
             int choice;
             while (true) {
-                choice = ConsoleHelper.promptForInt("Choose topping # ");
+                choice = ConsoleHelper.promptForInt("Choose topping #");
                 if (choice >= 1 && choice <= choices.length) break;
                 System.out.println("Invalid topping number! Try again.");
             }
             //Extra option for premium toppings
             boolean extra = false;
             if (type.equals("MEAT") || type.equals("CHEESE")) {
-                extra = ConsoleHelper.promptForYesNo("Extra?");
+                while (true) { // Keep asking until valid input
+                    String extraInput = ConsoleHelper.promptForString("Extra? (Y/N): ");
+                    if (extraInput.equalsIgnoreCase("Y")) {
+                        extra = true;
+                        break; // valid, exit loop
+                    } else if (extraInput.equalsIgnoreCase("N")) {
+                        extra = false;
+                        break; // valid, exit loop
+                    } else {
+                        System.out.println("Invalid input! Please enter only Y or N."); // invalid
+                    }
+                }
             }
             //Add topping to sandwich
             s.addTopping(new ToppingItem(choices[choice - 1], type, extra));

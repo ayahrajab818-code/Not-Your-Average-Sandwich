@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 /*
  * This class stores all sauce options.
  */

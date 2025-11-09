@@ -1,8 +1,9 @@
-package com.pluralsight;
+package com.pluralsight.orders;
 
+
+import com.pluralsight.models.Product;
 
 import java.io.FileWriter;
-import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,7 +27,7 @@ public class ReceiptFile {
             for (Product p : o.getEntry()) {
                 w.write(p.getDescription() + " - $" + p.getPrice() + "\n");
             }
-
+            w.write("--------------------------\n");
             w.write("\nTotal = $" + o.getTotal() + "\n");
             w.write("--------------------------\n");
 

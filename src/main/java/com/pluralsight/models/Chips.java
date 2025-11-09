@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
-public class Chips extends Product{
+public class Chips extends Product {
     private String flavor; //Flavor of chips
 
     public Chips(String flavor) {

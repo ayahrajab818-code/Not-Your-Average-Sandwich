@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 /*
  * Product is a parent class for all items (Sandwich, Drink, Chips).
  * Abstract = cannot create a Product directly, only subclasses.

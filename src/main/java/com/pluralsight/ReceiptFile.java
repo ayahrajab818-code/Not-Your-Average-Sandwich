@@ -11,7 +11,9 @@ public class ReceiptFile {
 
             //File name format yyyyMMdd-HHmmss.txt
             DateTimeFormatter fileFormat = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+            String fileName = "receipts/" + now.format(fileFormat) + ".txt";
 
+            
         }
     }
 

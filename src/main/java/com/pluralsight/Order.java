@@ -15,8 +15,9 @@ public class Order {
         return entry;
     }
 
+    //Calculate total price
     public double getTotal(){
-        double total = 0;
+        double total = 0; //Start at 0
     }
 
 

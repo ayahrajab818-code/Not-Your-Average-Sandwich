@@ -13,9 +13,14 @@ public class Drink extends Product{
     //Get price based on size
     @Override
     public double getPrice() {
-        return 0;
+        if(size.equals("S"))
+            return 2.00;
+        else if(size.equals("M"))
+            return 2.50;
+        else
+            return 3.00; //Large size
     }
-    
+
     //Return description for receipt
     @Override
     public String getDescription() {

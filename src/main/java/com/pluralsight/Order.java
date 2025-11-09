@@ -15,6 +15,9 @@ public class Order {
         return entry;
     }
 
+    public double getTotal(){
+        double total = 0;
+    }
 
 
 

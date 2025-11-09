@@ -75,11 +75,23 @@ public class HomeScreen {
         //Ask the user for the sandwich size (4, 8, or 12 inches)
         String size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches): ");
 
-        // Ask if the sandwich should be toasted
+        //Ask if the sandwich should be toasted
         boolean toasted = ConsoleHelper.promptForYesNo("Toasted?");
 
-        
+        //Create a new Sandwich object using the chosen bread, size, and toasted option
+        Sandwich s = new Sandwich(bread, size, toasted);
 
+        //Start a loop to add toppings one by one
+        while(true){
+            //Ask user for the topping type or "DONE" to finish
+            String type = ConsoleHelper.promptForString(
+                    "Add your topping type (MEAT/CHEESE/REGULAR/SAUCE) or DONE to finish: "
+            ).toUpperCase();
+
+            // Exit the loop if the user types "DONE"
+            if(type.equals("DONE")) break;
+            
+        }
 
     }
 

@@ -61,6 +61,14 @@ public class HomeScreen {
     }
 
     private static Product addSandwich() {
+        //Prompt user to choose bread type
+        System.out.println("Please choose a bread type: ");
+
+        //Display all available bread types with numbers
+        for (int i = 0; i < BreadType.TYPES.length; i++) {
+            System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
+        }
+        
     }
 
     private static Product addDrink() {

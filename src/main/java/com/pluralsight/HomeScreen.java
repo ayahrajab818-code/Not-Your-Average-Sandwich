@@ -113,8 +113,10 @@ public class HomeScreen {
         String flavor = ConsoleHelper.promptForString("Drink flavor: ");
         return new Drink(size, flavor);
     }
-
+    //Creates chips
     private static Product addChips() {
+        String flavor = ConsoleHelper.promptForString("what's your chips flavor");
+        return new Chips(flavor);
     }
 
     private static void checkout(Order o) {

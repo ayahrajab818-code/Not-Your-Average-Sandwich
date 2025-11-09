@@ -6,12 +6,13 @@ public class Chips extends Product{
     public Chips(String flavor) {
         this.flavor = flavor;
     }
-
+    //Chips price
     @Override
     public double getPrice() {
-        return 0;
+        return 1.50;
     }
-
+    
+    //Return description for receipt
     @Override
     public String getDescription() {
         return "";

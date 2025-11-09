@@ -18,7 +18,28 @@ public class HomeScreen {
             String command = ConsoleHelper.promptForString("Enter command (N, X): ").toUpperCase();
 
             switch (command){
-                
+
+                //Start new order
+                case "N" -> {
+                    Order o = new Order();
+                    boolean running = true;
+
+                    String orderMenu = """
+                    //------------Order Menu------------//
+                    ========================
+                    What would you like to add?
+                    S) Add Sandwich
+                    D) Add Drink
+                    C) Add Chips
+                    O) Checkout
+                    X) Cancel Order
+                    =======================
+                    """;
+
+                    while(running){
+                        System.out.println(orderMenu);
+                    }
+                }
             }
         }
     }

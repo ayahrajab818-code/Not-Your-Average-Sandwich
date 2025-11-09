@@ -1,6 +1,9 @@
 package com.pluralsight;
 
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class HomeScreen {
     public static void main(String[] args) {
 
@@ -118,7 +121,10 @@ public class HomeScreen {
         String flavor = ConsoleHelper.promptForString("what's your chips flavor");
         return new Chips(flavor);
     }
-
+    //Finishes an order and writes a receipt
     private static void checkout(Order o) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     }
 }

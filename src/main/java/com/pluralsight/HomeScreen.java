@@ -58,7 +58,14 @@ public class HomeScreen {
                             default -> System.out.println("INVALID COMMAND! Please try again.");
                         }
                     }
+
                 }
+                case "X" -> {
+                    System.out.println("Exiting application..."); // Notify user
+                    return; // Stop program
+                }
+                //Any other input
+                default -> System.out.println("Invalid choice! Please enter N for New Order or X to Exit."); //Invalid input
             }
         }
     }

@@ -2,6 +2,7 @@ package com.pluralsight;
 
 
 import java.io.FileWriter;
+import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,7 +19,8 @@ public class ReceiptFile {
 
             //Display format for human-readable date/time
             DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
+            w.write("=== Not-Your-Average-Sandwich Receipt ===\n");
+            w.write("Order Date/Time: " + now.format(displayFormat) + "\n\n");
         }
     }
 

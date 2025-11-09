@@ -1,8 +1,8 @@
-package com.pluralsight;
+package com.pluralsight.challengeYourself;
 
 import com.pluralsight.models.ToppingItem;
 
-public class PhillyCheeseSteak extends SignatureSandwich{
+public class PhillyCheeseSteak extends SignatureSandwich {
     public PhillyCheeseSteak(){
         super("white","8", true);
 

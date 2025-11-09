@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.challengeYourself;
 
 import com.pluralsight.models.ToppingItem;
 

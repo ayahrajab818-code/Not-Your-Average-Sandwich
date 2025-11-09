@@ -18,9 +18,9 @@ public class ReceiptFile {
 
             FileWriter w = new FileWriter(fileName); //Create file writer
 
-            //Display format for human-readable date/time
-            DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            w.write("=== Not-Your-Average-Sandwich Receipt ===\n");
+            //Format date/time to 12-hour with AM/PM
+            DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a");
+            w.write("\n=== Not-Your-Average-Sandwich Receipt ===");
             w.write("Order Date/Time: " + now.format(displayFormat) + "\n\n");
 
             // Write each product

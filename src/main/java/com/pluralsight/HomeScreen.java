@@ -1,6 +1,8 @@
 package com.pluralsight;
 
 
+import com.pluralsight.challengeYourself.BLT;
+import com.pluralsight.challengeYourself.PhillyCheeseSteak;
 import com.pluralsight.models.*;
 import com.pluralsight.orders.Order;
 import com.pluralsight.orders.ReceiptFile;
@@ -239,7 +241,7 @@ public class HomeScreen {
         //Get current date/time
         LocalDateTime now = LocalDateTime.now();
         //Format how the date/time will look on screen
-        DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a");
 
         System.out.println("\n=== ORDER SUMMARY ===");
         System.out.println("Order Date/Time " + now.format(displayFormat));//Show formatted date/time in console

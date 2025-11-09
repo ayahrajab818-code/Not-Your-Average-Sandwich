@@ -1,0 +1,9 @@
+
+=== Not-Your-Average-Sandwich Receipt ===Order Date/Time: 2025-11-09 18:55:25 PM
+
+8" white(Toasted: true)
+Toppings: Bacon, Cheddar, Lettuce, Tomato, Ranch,  - $10.5
+--------------------------
+
+Total = $10.5
+--------------------------

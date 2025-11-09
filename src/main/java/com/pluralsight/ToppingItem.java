@@ -1,39 +1,28 @@
 package com.pluralsight;
 
+
+
+// Represents a single topping selected for a sandwich
 public class ToppingItem {
-    private String name;
-    private String category ; //Topping type: MEAT, CHEESE, REGULAR, SAUCE
-    private boolean extra; //True if customer wants extra amount
+    private String name;   // Name of topping
+    private String category;   //topping: MEAT, CHEESE, REGULAR, SAUCE
+    private boolean extra; // True if extra portion is requested
 
-    public ToppingItem(String name, String category , boolean extra) {
-        this.name = name;
-        this.category  = category ;
-        this.extra = extra;
+    // Constructor
+    public ToppingItem(String name, String category, boolean extra) {
+        this.name = name;   // Assign name
+        this.category= category;
+        this.extra = extra; // Assign extra flag
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategory () {
-        return category ;
-    }
-
-    public void setCategory (String category ) {
-        this.category  = category ;
-    }
-
-    public boolean isExtra() {
-        return extra;
-    }
-
-    public void setExtra(boolean extra) {
-        this.extra = extra;
-    }
+    // Getter for topping name
+    public String getName() { return name; }
 
 
+    public String getCategory() { return category; }
+
+    // Getter for extra flag
+    public boolean isExtra() { return extra; }
 }
+
+

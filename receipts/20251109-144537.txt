@@ -1,0 +1,10 @@
+=== Not-Your-Average-Sandwich Receipt ===
+Order Date/Time: 2025-11-09 14:45:37
+
+14" Wheat(Toasted: true)
+Toppings: meat,  - $0.0
+mDrink (coke) - $3.0
+chips (bbq) - $1.5
+
+Total = $4.5
+--------------------------

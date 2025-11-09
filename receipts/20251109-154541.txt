@@ -1,0 +1,8 @@
+=== Not-Your-Average-Sandwich Receipt ===
+Order Date/Time: 2025-11-09 15:45:41
+
+4" White(Toasted: true)
+Toppings: Bacon(extra), American,  - $6.75
+
+Total = $6.75
+--------------------------

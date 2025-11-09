@@ -4,36 +4,33 @@ package com.pluralsight;
  */
 public class Topping {
 
-    //Meat toppings (premium)
-    public static String[] MEATS = {
-            "Steak",
-            "Ham",
-            "Salami",
-            "Roast Beef",
-            "Chicken",
-            "Bacon"
-    };
-    //Cheese toppings (premium)
-    public static String[] CHEESES = {
-            "American",
-            "Provolone",
-            "Cheddar",
-            "Swiss"
-    };
-    //Regular toppings (free)
-    public static String[] REGULAR = {
-            "Lettuce",
-            "Peppers",
-            "Onions",
-            "Tomatoes",
-            "Jalapeños",
-            "Cucumbers",
-            "Pickles",
-            "Guacamole",
-            "Mushrooms"
-    };
-
-    //reuse Sauce options
+    // Arrays of available toppings
+    public static String[] MEATS = { "Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon" };
+    public static String[] CHEESES = { "American", "Provolone", "Cheddar", "Swiss" };
+    public static String[] REGULAR = { "Lettuce", "Peppers", "Onions", "Tomatoes", "Jalapeños", "Cucumbers", "Pickles", "Guacamole", "Mushrooms" };
     public static String[] SAUCES = Sauce.SAUCES;
+
+    // Instance variables
+    private String name;
+    private String category;
+    private boolean extra;
+
+    // ✅ Add this constructor
+    public Topping(String name, String category, boolean extra) {
+        this.name = name;
+        this.category = category;
+        this.extra = extra;
+    }
+
+    // Optional: getter methods
+    public String getName() { return name; }
+    public String getCategory() { return category; }
+    public boolean isExtra() { return extra; }
+
+    // Optional: description for printing
+    public String getDescription() {
+        return name + (extra ? " (extra)" : "");
+    }
 }
+
 

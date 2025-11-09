@@ -28,11 +28,11 @@ public class HomeScreen {
                             //------------Order Menu------------//
                             ========================
                             What would you like to add?
-                            S) Add Sandwich
-                            D) Add Drink
-                            C) Add Chips
-                            O) Checkout
-                            X) Cancel Order
+                            1) Add Sandwich
+                            2) Add Drink
+                            3) Add Chips
+                            4) Checkout
+                            0) Cancel Order
                             =======================
                             """;
 
@@ -102,13 +102,16 @@ public class HomeScreen {
             //Add the topping to the sandwich
             s.addTopping(new ToppingItem(name, category, extra));
         }
-        
+
         //Return the Sandwich as a Product allows storing it in a list of Products
         return s;
 
     }
-
+    //Creates a drink
     private static Product addDrink() {
+        String size = ConsoleHelper.promptForString("Drink size (S/M/L):");
+        String flavor = ConsoleHelper.promptForString("Drink flavor: ");
+        return new Drink(size, flavor);
     }
 
     private static Product addChips() {

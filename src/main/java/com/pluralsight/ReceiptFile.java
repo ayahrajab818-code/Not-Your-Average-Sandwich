@@ -26,6 +26,12 @@ public class ReceiptFile {
             for(Product p : o.getEntry()){
                 w.write(p.getDescription() + " - $" + p.getPrice() + "\n");
             }
+
+            w.write("\nTotal = $" + o.getTotal() + "\n");
+            w.write("--------------------------\n");
+
+            w.close(); //Close file
+            
         }
     }
 

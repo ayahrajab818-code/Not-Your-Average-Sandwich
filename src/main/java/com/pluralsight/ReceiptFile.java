@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptFile {
     public static void writeReceipt(Order o){
-        try{
+        try {
             LocalDateTime now = LocalDateTime.now(); //Get current date/time
 
             //File name format yyyyMMdd-HHmmss.txt
@@ -23,7 +23,7 @@ public class ReceiptFile {
             w.write("Order Date/Time: " + now.format(displayFormat) + "\n\n");
 
             // Write each product
-            for(Product p : o.getEntry()){
+            for (Product p : o.getEntry()) {
                 w.write(p.getDescription() + " - $" + p.getPrice() + "\n");
             }
 
@@ -31,8 +31,13 @@ public class ReceiptFile {
             w.write("--------------------------\n");
 
             w.close(); //Close file
-            
-        }
-    }
 
-}
+            System.out.println("Receipt saved to file successfully : " + fileName);
+
+        } catch (Exception e) {
+            System.out.println("Receipt error: " + e.getMessage());
+        }
+     }
+   }
+
+

@@ -39,11 +39,12 @@ public class HomeScreen {
                     2) Add Drink
                     3) Add Chips
                     4) Checkout
+                    5) Signature Sandwiches
                     0) Cancel Order
                     """;
                     while (running) {
                         System.out.println(orderMenu);
-                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0)").toUpperCase();
+                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 5, 0)").toUpperCase();
                         switch (c) {
                             case "1" -> o.add(addSandwich());
                             case "2" -> o.add(addDrink());
@@ -51,6 +52,9 @@ public class HomeScreen {
                             case "4" -> {
                                 checkout(o);
                                 running = false;
+                            }
+                            case "5" ->{
+                                o.add(addSignatureSandwich());
                             }
                             case "0" -> {
                                 System.out.println("Exiting application.");
@@ -205,6 +209,10 @@ public class HomeScreen {
         return new Chips(flavor);
     }
 
+    private static Product addSignatureSandwich(){
+
+    }
+
 
     //Checkout method to show summary and save receipt
     private static void checkout(Order o) {
@@ -233,4 +241,5 @@ public class HomeScreen {
         else System.out.println("Order cancelled! ");
 
     }
+
 }

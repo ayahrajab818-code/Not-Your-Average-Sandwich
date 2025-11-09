@@ -68,7 +68,19 @@ public class HomeScreen {
         for (int i = 0; i < BreadType.TYPES.length; i++) {
             System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
         }
+
+        //Read the user's selection and get the corresponding bread type
+        String bread = BreadType.TYPES[ConsoleHelper.promptForInt("Select your brad  #: ") - 1];
+
+        //Ask the user for the sandwich size (4, 8, or 12 inches)
+        String size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches): ");
+
+        // Ask if the sandwich should be toasted
+        boolean toasted = ConsoleHelper.promptForYesNo("Toasted?");
+
         
+
+
     }
 
     private static Product addDrink() {

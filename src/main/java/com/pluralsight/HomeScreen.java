@@ -4,9 +4,7 @@ package com.pluralsight;
 public class HomeScreen {
     public static void main(String[] args) {
 
-        while(true){
-
-            String mainMenu = """
+            String homeMenu = """
             //------------Main Menu------------//
             ========================
             What do you want to do?
@@ -14,6 +12,14 @@ public class HomeScreen {
             0) Exit
             =======================
             """;
+
+            while (true) {
+            System.out.println(homeMenu);
+            String command = ConsoleHelper.promptForString("Enter command (N, X): ").toUpperCase();
+
+            switch (command){
+                
+            }
         }
     }
 }

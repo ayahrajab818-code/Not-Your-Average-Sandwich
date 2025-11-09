@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -13,7 +14,11 @@ public class ReceiptFile {
             DateTimeFormatter fileFormat = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
             String fileName = "receipts/" + now.format(fileFormat) + ".txt";
 
-            
+            FileWriter w = new FileWriter(fileName); //Create file writer
+
+            //Display format for human-readable date/time
+            DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
         }
     }
 

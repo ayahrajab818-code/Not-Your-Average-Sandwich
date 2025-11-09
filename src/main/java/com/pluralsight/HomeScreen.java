@@ -126,5 +126,12 @@ public class HomeScreen {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+        System.out.println("\n=== ORDER SUMMARY ===");
+        System.out.println("Order Date/Time: " + now.format(displayFormat));
+
+        for(Product p : o.getEntry()){
+            System.out.println(p.getDescription());
+        }
+        
     }
 }

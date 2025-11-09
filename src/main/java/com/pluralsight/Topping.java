@@ -39,22 +39,14 @@ public class Topping {
     private String category;
     private boolean extra;
 
-    // ✅ Add this constructor
+    // Add this constructor
     public Topping(String name, String category, boolean extra) {
         this.name = name;
         this.category = category;
         this.extra = extra;
     }
 
-    // Optional: getter methods
-    public String getName() { return name; }
-    public String getCategory() { return category; }
-    public boolean isExtra() { return extra; }
 
-    // Optional: description for printing
-    public String getDescription() {
-        return name + (extra ? " (extra)" : "");
-    }
 }
 
 

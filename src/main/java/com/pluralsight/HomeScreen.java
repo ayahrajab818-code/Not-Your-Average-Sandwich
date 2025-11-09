@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HomeScreen {
+
+    //------Main Menu here-----
     public static void main(String[] args) {
 
         String homeMenu = """
@@ -70,13 +72,18 @@ public class HomeScreen {
         }
     }
 
+
+    //Method to create a sandwich with user input
     private static Product addSandwich() {
         System.out.println("\n--- Add Sandwich ---");
+        //Variable to store bread choice
         int breadChoice;
+        //Repeat until valid choice
         while (true) {
             System.out.println("Please choose a bread type ");
+            //Loop through available breads
             for (int i = 0; i < BreadType.TYPES.length; i++) {
-                System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
+                System.out.println((i + 1) + ") " + BreadType.TYPES[i]);//Display option
             }
 
             breadChoice = ConsoleHelper.promptForInt("Select your bread # ");
@@ -87,6 +94,7 @@ public class HomeScreen {
 
             System.out.println("Invalid choice! Please select one of the options above.");
         }
+        //Store chosen bread
         String bread = BreadType.TYPES[breadChoice - 1];
 
         //Ask the user for the sandwich size (4, 8, or 12 inches)
@@ -99,7 +107,8 @@ public class HomeScreen {
         }
         System.out.println("Invalid size! Please enter only 4, 8, or 12.");
     }
-        //Ask if the sandwich should be toasted
+        //Toasted option
+        //Variable to store toasted choice
         boolean toasted;
         while (true) {
         String t = ConsoleHelper.promptForString("Toasted? (Y/N) ");
@@ -127,6 +136,7 @@ public class HomeScreen {
 
             String[] choices = null;
 
+            //Array to store available toppings
             switch (type) {
                 case "MEAT" -> choices = Topping.MEATS;
                 case "CHEESE" -> choices = Topping.CHEESES;
@@ -142,7 +152,7 @@ public class HomeScreen {
             // Show available toppings
             System.out.println("Available " + type + " toppings");
             for (int i = 0; i < choices.length; i++) {
-                System.out.println((i + 1) + ") " + choices[i]);
+                System.out.println((i + 1) + ") " + choices[i]); //List toppings
             }
 
             int choice;
@@ -151,12 +161,12 @@ public class HomeScreen {
                 if (choice >= 1 && choice <= choices.length) break;
                 System.out.println("Invalid topping number! Try again.");
             }
-
+            //Extra option for premium toppings
             boolean extra = false;
             if (type.equals("MEAT") || type.equals("CHEESE")) {
                 extra = ConsoleHelper.promptForYesNo("Extra?");
             }
-
+            //Add topping to sandwich
             s.addTopping(new ToppingItem(choices[choice - 1], type, extra));
         }
 
@@ -164,7 +174,9 @@ public class HomeScreen {
         return s;
 
     }
-    //Creates a drink and returns it
+
+
+    //Method to create a drink
     private static Product addDrink() {
         System.out.println("\n--- Add Drink ---");
 
@@ -173,7 +185,9 @@ public class HomeScreen {
         //Create and return Drink object
         return new Drink(size, flavor);
     }
-    //Creates chips
+
+
+    //Method to create chips
     private static Product addChips() {
         System.out.println("\n--- Add Chips ---");
         String flavor = ConsoleHelper.promptForString("what's your chips flavor");
@@ -181,7 +195,9 @@ public class HomeScreen {
         //Create and return Chips object
         return new Chips(flavor);
     }
-    //Shows the order summary and writes receipt file
+
+
+    //Checkout method to show summary and save receipt
     private static void checkout(Order o) {
         //Get current date/time
         LocalDateTime now = LocalDateTime.now();

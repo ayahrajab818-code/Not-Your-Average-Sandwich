@@ -4,12 +4,17 @@ package com.pluralsight;
 import java.util.ArrayList;
 
 public class Order {
-    private ArrayList<Product> items = new ArrayList<>(); //List of products
+    private ArrayList<Product> entry = new ArrayList<>(); //List of products
 
     //Add a product to the order
     public void add(Product p) {
-        items.add(p);
+        entry.add(p);
     }
+    //Return list of products
+    public ArrayList<Product> getItems(){
+        return entry;
+    }
+
 
 
 

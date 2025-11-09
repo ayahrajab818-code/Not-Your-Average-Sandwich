@@ -18,7 +18,7 @@ public class HomeScreen {
 
         while (true) {
             System.out.println(homeMenu);
-            String command = ConsoleHelper.promptForString("Enter command (N, X): ").toUpperCase();
+            String command = ConsoleHelper.promptForString("Enter command (N, X) ").toUpperCase();
 
             switch (command) {
 
@@ -41,7 +41,7 @@ public class HomeScreen {
 
                     while (running) {
                         System.out.println(orderMenu);
-                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0): ").toUpperCase();
+                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0) ").toUpperCase();
 
                         switch (c) {
                             case "1" -> o.add(addSandwich());
@@ -74,12 +74,12 @@ public class HomeScreen {
         System.out.println("\n--- Add Sandwich ---");
         int breadChoice;
         while (true) {
-            System.out.println("Please choose a bread type: ");
+            System.out.println("Please choose a bread type ");
             for (int i = 0; i < BreadType.TYPES.length; i++) {
                 System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
             }
 
-            breadChoice = ConsoleHelper.promptForInt("Select your bread #: ");
+            breadChoice = ConsoleHelper.promptForInt("Select your bread # ");
 
             if (breadChoice >= 1 && breadChoice <= BreadType.TYPES.length) {
                 break;
@@ -92,7 +92,7 @@ public class HomeScreen {
         //Ask the user for the sandwich size (4, 8, or 12 inches)
         String size;
         while (true) {
-         size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches): ");
+         size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches) ");
 
         if (size.equals("4") || size.equals("8") || size.equals("12")) {
             break;
@@ -120,7 +120,7 @@ public class HomeScreen {
         //Start a loop to add toppings one by one
         while (true) {
             String type = ConsoleHelper.promptForString(
-                    "Add topping type (MEAT/CHEESE/REGULAR/SAUCE) or DONE: "
+                    "Add topping type (MEAT/CHEESE/REGULAR/SAUCE/SIDE) or DONE "
             ).toUpperCase();
 
             if (type.equals("DONE")) break;
@@ -132,21 +132,22 @@ public class HomeScreen {
                 case "CHEESE" -> choices = Topping.CHEESES;
                 case "REGULAR" -> choices = Topping.REGULAR;
                 case "SAUCE" -> choices = Topping.SAUCES;
+                case "SIDE" -> choices = Topping.SIDES;
                 default -> {
-                    System.out.println("Invalid type! Please choose MEAT, CHEESE, REGULAR, SAUCE or DONE.");
+                    System.out.println("Invalid type! Please choose MEAT, CHEESE, REGULAR, SAUCE, SIDE or DONE.");
                     continue;
                 }
             }
 
             // Show available toppings
-            System.out.println("Available " + type + " toppings:");
+            System.out.println("Available " + type + " toppings");
             for (int i = 0; i < choices.length; i++) {
                 System.out.println((i + 1) + ") " + choices[i]);
             }
 
             int choice;
             while (true) {
-                choice = ConsoleHelper.promptForInt("Choose topping #: ");
+                choice = ConsoleHelper.promptForInt("Choose topping # ");
                 if (choice >= 1 && choice <= choices.length) break;
                 System.out.println("Invalid topping number! Try again.");
             }
@@ -167,8 +168,8 @@ public class HomeScreen {
     private static Product addDrink() {
         System.out.println("\n--- Add Drink ---");
 
-        String size = ConsoleHelper.promptForString("Drink size (S/M/L):");
-        String flavor = ConsoleHelper.promptForString("Drink flavor: ");
+        String size = ConsoleHelper.promptForString("Drink size (S/M/L)");
+        String flavor = ConsoleHelper.promptForString("Drink flavor ");
         //Create and return Drink object
         return new Drink(size, flavor);
     }
@@ -188,7 +189,7 @@ public class HomeScreen {
         DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         System.out.println("\n=== ORDER SUMMARY ===");
-        System.out.println("Order Date/Time: " + now.format(displayFormat));//Show formatted date/time in console
+        System.out.println("Order Date/Time " + now.format(displayFormat));//Show formatted date/time in console
 
         //Loop through all entry and print description
         for(Product p : o.getEntry()){

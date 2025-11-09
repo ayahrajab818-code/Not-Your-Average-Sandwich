@@ -2,7 +2,7 @@ package com.pluralsight;
 /*
  * This class stores all bread options for sandwiches.
  */
-public class Bread {
+public class BreadType {
     public static String[] TYPES = {
             "White",
             "Wheat",

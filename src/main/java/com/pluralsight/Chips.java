@@ -11,10 +11,10 @@ public class Chips extends Product{
     public double getPrice() {
         return 1.50;
     }
-    
+
     //Return description for receipt
     @Override
     public String getDescription() {
-        return "";
+        return "chips (" + flavor + ")";
     }
 }

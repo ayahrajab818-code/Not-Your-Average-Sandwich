@@ -90,7 +90,16 @@ public class HomeScreen {
 
             // Exit the loop if the user types "DONE"
             if(type.equals("DONE")) break;
-            
+
+            // Ask user for the topping name
+            String name = ConsoleHelper.promptForString("What's your topping name: ");
+            boolean extra = false;
+
+            //If the topping is meat or cheese, ask if the user wants extra
+            if(type.equals("MEAT") || type.equals("CHEESE")){
+                extra = ConsoleHelper.promptForYesNo("Do you want to add extras?");
+
+            }
         }
 
     }

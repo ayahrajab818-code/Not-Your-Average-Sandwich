@@ -84,23 +84,27 @@ public class HomeScreen {
         //Start a loop to add toppings one by one
         while(true){
             //Ask user for the topping type or "DONE" to finish
-            String type = ConsoleHelper.promptForString(
+            String category = ConsoleHelper.promptForString(
                     "Add your topping type (MEAT/CHEESE/REGULAR/SAUCE) or DONE to finish: "
             ).toUpperCase();
 
             // Exit the loop if the user types "DONE"
-            if(type.equals("DONE")) break;
+            if(category.equals("DONE")) break;
 
             // Ask user for the topping name
             String name = ConsoleHelper.promptForString("What's your topping name: ");
             boolean extra = false;
 
             //If the topping is meat or cheese, ask if the user wants extra
-            if(type.equals("MEAT") || type.equals("CHEESE")){
+            if(category.equals("MEAT") || category.equals("CHEESE")){
                 extra = ConsoleHelper.promptForYesNo("Do you want to add extras?");
-
             }
+            //Add the topping to the sandwich
+            s.addTopping(new ToppingItem(name, category, extra));
         }
+        
+        //Return the Sandwich as a Product allows storing it in a list of Products
+        return s;
 
     }
 

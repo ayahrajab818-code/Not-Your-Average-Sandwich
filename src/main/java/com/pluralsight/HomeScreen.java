@@ -110,28 +110,45 @@ public class HomeScreen {
         return s;
 
     }
-    //Creates a drink
+    //Creates a drink and returns it
     private static Product addDrink() {
         String size = ConsoleHelper.promptForString("Drink size (S/M/L):");
         String flavor = ConsoleHelper.promptForString("Drink flavor: ");
+        //Create and return Drink object
         return new Drink(size, flavor);
     }
     //Creates chips
     private static Product addChips() {
         String flavor = ConsoleHelper.promptForString("what's your chips flavor");
+
+        //Create and return Chips object
         return new Chips(flavor);
     }
-    //Finishes an order and writes a receipt
+    //Shows the order summary and writes receipt file
     private static void checkout(Order o) {
+        //Get current date/time
         LocalDateTime now = LocalDateTime.now();
+        //Format how the date/time will look on screen
         DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         System.out.println("\n=== ORDER SUMMARY ===");
-        System.out.println("Order Date/Time: " + now.format(displayFormat));
+        System.out.println("Order Date/Time: " + now.format(displayFormat));//Show formatted date/time in console
 
+        //Loop through all entry and print description
         for(Product p : o.getEntry()){
             System.out.println(p.getDescription());
         }
-        
+
+        //Display the total price of everything
+        System.out.println("TOTAL: $" + o.getTotal());
+        //Ask if user wants to confirm purchase
+        if(ConsoleHelper.promptForYesNo("Would you like to confirm order? ")) {
+            //Writes receipt to a file
+            ReceiptFile.writeReceipt(o);
+            System.out.println("Receipt saved! ");
+        }
+        //If declined, cancel
+        else System.out.println("Order cancelled! ");
+
     }
 }

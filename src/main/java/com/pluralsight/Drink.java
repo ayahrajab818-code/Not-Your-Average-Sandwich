@@ -24,6 +24,6 @@ public class Drink extends Product{
     //Return description for receipt
     @Override
     public String getDescription() {
-        return "";
+        return size + "Drink (" + flavor + ")";
     }
 }

@@ -38,23 +38,37 @@ public class HomeScreen {
 
                     while (running) {
                         System.out.println(orderMenu);
-                        String c = ConsoleHelper.promptForString("Enter command (S, D, C, O, X): ").toUpperCase();
+                        String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 0): ").toUpperCase();
 
                         switch (c) {
-                            case "S" -> order.add(addSandwich());
-                            case "D" -> order.add(addDrink());
-                            case "C" -> order.add(addChips());
-                            case "O" -> {
-                                checkout(order);
+                            case "1" -> o.add(addSandwich());
+                            case "2" -> o.add(addDrink());
+                            case "3" -> o.add(addChips());
+                            case "4" -> {
+                                checkout(o);
                                 running = false;
                             }
-                            
-
-
+                            case "0" -> {
+                                System.out.println("Exiting application.");
+                                return;
+                            }
+                            default -> System.out.println("INVALID COMMAND! Please try again.");
                         }
                     }
                 }
             }
         }
+    }
+
+    private static Product addSandwich() {
+    }
+
+    private static Product addDrink() {
+    }
+
+    private static Product addChips() {
+    }
+
+    private static void checkout(Order o) {
     }
 }

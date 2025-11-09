@@ -18,6 +18,8 @@ public class Order {
     //Calculate total price
     public double getTotal(){
         double total = 0; //Start at 0
+        for(Product p : entry) total += p.getPrice(); //Adding each price
+        return total; //Return total
     }
 
 

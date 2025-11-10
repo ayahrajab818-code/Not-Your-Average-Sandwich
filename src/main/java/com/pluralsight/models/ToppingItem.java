@@ -1,7 +1,5 @@
 package com.pluralsight.models;
 
-
-
 // Represents a single topping selected for a sandwich
 public class ToppingItem {
     private String name;   // Name of topping
@@ -16,13 +14,16 @@ public class ToppingItem {
     }
 
     // Getter for topping name
-    public String getName() { return name; }
+    public String getName() {
+        return name; }
 
 
-    public String getCategory() { return category; }
+    public String getCategory() {
+        return category; }
 
     // Getter for extra flag
-    public boolean isExtra() { return extra; }
+    public boolean isExtra() {
+        return extra; }
 }
 
 

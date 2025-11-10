@@ -8,6 +8,7 @@ public class Drink extends Product {
     public Drink(String size, String flavor) {
         this.size = size;
         this.flavor = flavor;
+
     }
 
     //Get price based on size

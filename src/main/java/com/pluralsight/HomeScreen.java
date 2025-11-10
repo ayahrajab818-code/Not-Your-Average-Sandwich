@@ -124,7 +124,7 @@ public class HomeScreen {
                 break;
             }
 
-            System.out.println("Invalid input! Please enter Y or N only.");
+            System.out.println("Invalid input! Please enter Y or N.");
         }
 
         //Create a new Sandwich object using the chosen bread, size, and toasted option
@@ -168,7 +168,7 @@ public class HomeScreen {
             //Extra option for premium toppings
             boolean extra = false;
             if (type.equals("MEAT") || type.equals("CHEESE")) {
-                while (true) { // Keep asking until valid input
+                while (true) {
                     String extraInput = ConsoleHelper.promptForString("Extra? (Y/N): ");
                     if (extraInput.equalsIgnoreCase("Y")) {
                         extra = true;
@@ -195,11 +195,54 @@ public class HomeScreen {
     private static Product addDrink() {
         System.out.println("\n--- Add Drink ---");
 
-        String size = ConsoleHelper.promptForString("Drink size (S/M/L)");
-        String flavor = ConsoleHelper.promptForString("Drink flavor ");
-        //Create and return Drink object
+        // Show sizes & prices
+        System.out.println("Drink Sizes:");
+        System.out.println("S - $2.00");
+        System.out.println("M - $2.50");
+        System.out.println("L - $3.00");
+
+        //drink size
+        String size;
+        boolean availableSize = false;
+
+        do {
+            size = ConsoleHelper.promptForString("Choose drink size (S/M/L): ").toUpperCase();
+            if (size.equals("S") || size.equals("M") || size.equals("L")) {
+                availableSize = true;
+            } else {
+                System.out.println("Invalid size. Please enter S, M, or L.");
+            }
+        } while (!availableSize);
+
+        // Print available flavors
+        System.out.println("\nAvailable drink flavors:");
+        for (String f : DrinkFlavor.FLAVORS) {
+            System.out.println(" - " + f);
+        }
+
+        //flavor selection
+        String flavor;
+        boolean availableFlavor = false;
+
+        do {
+            flavor = ConsoleHelper.promptForString("Choose drink flavor: ");
+            for (String f : DrinkFlavor.FLAVORS) {
+                if (f.equalsIgnoreCase(flavor)) {
+                    availableFlavor = true;
+                    break;
+                }
+            }
+            if (!availableFlavor) {
+                System.out.println("That flavor is not listed.");
+            }
+        } while (!availableFlavor);
+
+        System.out.println("Your drink order has been saved!");
+
+        //Drink object contains its own pricing logic
         return new Drink(size, flavor);
     }
+
 
 
     //----------------- Method to create chips ------------------//

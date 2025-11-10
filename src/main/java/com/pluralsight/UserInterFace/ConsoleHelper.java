@@ -1,7 +1,5 @@
-package com.pluralsight;
+package com.pluralsight.UserInterFace;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class ConsoleHelper {

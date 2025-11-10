@@ -9,4 +9,8 @@ public class BreadType {
             "Rye",
             "Wrap"
     };
+
+    public static boolean isValid(int choice) {
+        return choice >= 1 && choice <= TYPES.length;
+    }
 }

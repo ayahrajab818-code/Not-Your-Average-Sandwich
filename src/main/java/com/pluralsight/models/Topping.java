@@ -46,7 +46,10 @@ public class Topping {
         this.category = category;
         this.extra = extra;
     }
-
+    public static boolean isValidChoice(int choice, String[] options) {
+        // Returns true if the choice number is between 1 and the length of the array
+        return choice >= 1 && choice <= options.length;
+    }
 
 }
 

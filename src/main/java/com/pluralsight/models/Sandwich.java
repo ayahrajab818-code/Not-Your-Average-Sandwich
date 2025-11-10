@@ -15,6 +15,18 @@ public class Sandwich extends Product {
         this.toasted = toasted;
     }
 
+    public String getBread() {
+        return bread;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public boolean isToasted() {
+        return toasted;
+    }
+
     public ArrayList<ToppingItem> getToppings() {
         return toppings;
     }

@@ -9,14 +9,17 @@ import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 public class ReceiptFile {
     public static void writeReceipt(Order o) {
+
+
         try {
             LocalDateTime now = LocalDateTime.now();
-
             //File name format yyyyMMdd-HHmmss.txt
             DateTimeFormatter fileFormat = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
             String fileName = "receipts/" + now.format(fileFormat) + ".txt";
+
 
             FileWriter w = new FileWriter(fileName);
 
@@ -26,38 +29,37 @@ public class ReceiptFile {
             w.write("================================\n\n");
 
             // SANDWICH SECTION
+            int sandwichCount = 1;
             w.write("---- Sandwiches ----\n");
 
-            for (int i = 0; i < o.getEntry().size(); i++) {
-                Sandwich s = o.getEntry().ge(i);
+            for (Product p : o.getEntry()) {
+                if (p instanceof Sandwich) {
+                    Sandwich s = (Sandwich) p; // Cast product to Sandwich
+                    w.write(sandwichCount + ". " + s.getSize() + "\" " + s.getBread() +
+                            " (Toasted: " + (s.isToasted() ? "Yes" : "No") + ")\n");
 
-                w.write((i + 1) + ". " + s.getSize() + "\" " + s.getBread() +
-                        " (Toasted: " + (s.isToasted() ? "Yes" : "No") + ")\n");
-                w.write("   Toppings: ");
-
-                // list toppings
-                for (int t = 0; t < s.getToppings().size(); t++) {
-                    ToppingItem top = s.getToppings().get(t);
-
-                    w.write(top.getName());
-                    if (top.isExtra()) {
-                        double extraPrice = s.getExtraPrice(top);
-                        w.write(" (extra) +$" + String.format("%.2f", extraPrice));
+                    // Build toppings string with extra pricing
+                    StringBuilder toppingLine = new StringBuilder("   Toppings: ");
+                    for (ToppingItem t : s.getToppings()) {
+                        toppingLine.append(t.getName());
+                        if (t.isExtra()) toppingLine.append(" (extra) +$").append(String.format("%.2f", s.getExtraPrice(t)));
+                        toppingLine.append(", ");
                     }
+                    // Remove last comma
+                    if (toppingLine.length() > 0) toppingLine.setLength(toppingLine.length() - 2);
+                    w.write(toppingLine.toString() + "\n");
 
-                    if (t < s.getToppings().size() - 1) {
-                        w.write(", ");
-                    }
+                    // Write price
+                    w.write("   Price: $" + String.format("%.2f", s.getPrice()) + "\n");
+                    sandwichCount++;
                 }
 
-                w.write("\n");
-                w.write(String.format("Price: $%.2f%n", s.getPrice()));
-            }
+                }
 
             w.write("\n================================\n");
             w.write(String.format("Total: $%.2f%n", o.getTotal()));
             w.write("================================\n\n");
-            w.write("Thank you for choosing DELI-SHOP!\n");
+            w.write("Thank you for choosing Not-Your-Average-Sandwich!\n");
 
             w.close();
 

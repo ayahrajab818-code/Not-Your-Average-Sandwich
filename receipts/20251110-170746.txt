@@ -1,0 +1,32 @@
+===== Not-Your-Average-Sandwich =====
+Date: 11/10/2025 05:07:46 PM
+================================
+
+---- Sandwiches ----
+1. 4" White(Toasted: true)
+Toppings: Steak(extra), Ham, American(extra), Provolone, 
+   Price: $8.05
+
+1. 4" White (Toasted: Yes)
+   Toppings: Steak (extra) +$0.50, Ham, American (extra) +$0.30, Provolone, 
+   Price: $8.05
+
+2. SDrink (Coke)
+   Price: $2.00
+
+3. SDrink (Coke)
+   Price: $2.00
+
+4. chips (Salt & Vinegar)
+   Price: $1.50
+
+5. 8" White (Toasted: Yes)
+   Toppings: Cheddar, Lettuce, Tomato, Ranch, Steak (extra) +$1.00, 
+   Price: $9.50
+
+
+================================
+Total: $23.05
+================================
+
+Thank you for choosing Not-Your-Average-Sandwich!

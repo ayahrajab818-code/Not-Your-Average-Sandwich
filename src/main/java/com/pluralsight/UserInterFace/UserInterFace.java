@@ -77,25 +77,28 @@ public class UserInterFace {
 
 
 //---------------------- Method to create a sandwich with user input -------------------//
-private static Product addSandwich() {
+    private static Product addSandwich() {
 
-    System.out.println("\n--- Add Sandwich ---");
+            System.out.println("\n--- Add Sandwich ---");
 
-       // ======== BREAD CHOICE ========
-            int breadChoice;
+            // ======== BREAD SELECTION ========
+            int breadChoice;// Variable to store the user's bread selection
             while (true) {
                 System.out.println("Please choose a bread type:");
+                // Display all available bread types with a corresponding number
                 for (int i = 0; i < BreadType.TYPES.length; i++) {
                     System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
                 }
-                breadChoice = ConsoleHelper.promptForInt("Select your bread #");
-
+                breadChoice = ConsoleHelper.promptForInt("Select your bread #: ");
+                // Check if the entered number is within the valid range of bread options
+                // BreadType.isValid returns true if the choice is between 1 and the number of available breads
                 if (BreadType.isValid(breadChoice))
-                    break;
+                    break; // Valid bread selected
                 System.out.println("Invalid choice! Please select an option above.");
             }
-            String bread = BreadType.TYPES[breadChoice - 1];
-            // ======== SIZE ========
+            String bread = BreadType.TYPES[breadChoice - 1]; // Store selected bread
+
+            // ======== SIZE SELECTION ========
             System.out.println("\nSandwich Sizes:");
             System.out.println("4\"  - $5.50");
             System.out.println("8\"  - $7.00");
@@ -103,14 +106,15 @@ private static Product addSandwich() {
 
             String size;
             while (true) {
-                size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches)");
+                size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches): ");
                 if (size.equals("4") || size.equals("8") || size.equals("12")) break;
                 System.out.println("Invalid size! Please enter only 4, 8, or 12.");
             }
-            // ======== TOASTED ========
+
+            // ======== TOASTED OPTION ========
             boolean toasted;
             while (true) {
-                String t = ConsoleHelper.promptForString("Toasted? (Y/N)");
+                String t = ConsoleHelper.promptForString("Toasted? (Y/N): ");
                 if (t.equalsIgnoreCase("Y")) {
                     toasted = true;
                     break;
@@ -120,17 +124,19 @@ private static Product addSandwich() {
                 }
                 System.out.println("Invalid input! Please enter Y or N.");
             }
-            Sandwich s = new Sandwich(bread, size, toasted);
 
-            // ======== PREMIUM PRICING DISPLAY ========
+            Sandwich s = new Sandwich(bread, size, toasted); // Create sandwich object
+
+            // ======== SHOW EXTRA PRICING ========
             System.out.println("\n=== Extra Pricing ===");
             System.out.println("Extra Meat:");
             System.out.println("4\" = $0.50   | 8\" = $1.00   | 12\" = $1.50");
             System.out.println("Extra Cheese:");
             System.out.println("4\" = $0.30   | 8\" = $0.60   | 12\" = $0.90\n");
 
-            // ======== TOPPINGS ========
+            // ======== TOPPINGS SELECTION ========
             while (true) {
+                // Topping type menu
                 System.out.println("\nChoose topping type:");
                 System.out.println("1) MEAT");
                 System.out.println("2) CHEESE");
@@ -139,13 +145,16 @@ private static Product addSandwich() {
                 System.out.println("5) SIDE");
                 System.out.println("6) DONE");
 
-                int typeChoice = ConsoleHelper.promptForInt("Select type #");
+                int typeChoice = ConsoleHelper.promptForInt("Select type #: ");
                 if (typeChoice == 6) {
                     System.out.println("Finished adding toppings.");
-                    break;// Done adding toppings
+                    break; // Exit topping selection
                 }
+
                 String type;
                 String[] choices;
+
+                // Map numeric selection to topping type arrays
                 switch (typeChoice) {
                     case 1 -> {
                         type = "MEAT";
@@ -169,133 +178,193 @@ private static Product addSandwich() {
                     }
                     default -> {
                         System.out.println("Invalid choice! Please select 1–6.");
-                        continue;
+                        continue; // Return to type menu
                     }
                 }
-                //Show available toppings for selected type
-                System.out.println("\nAvailable " + type + " toppings:");
-                for (int i = 0; i < choices.length; i++) {
-                    System.out.println((i + 1) + ") " + choices[i]);
-                }
 
-                int choice;
-                while (true) {
-                    choice = ConsoleHelper.promptForInt("Choose topping #");
-                    if (choice >= 1 && choice <= choices.length) break;
-                    System.out.println("Invalid topping number! Try again.");
-                }
+                // Inner loop: allows multiple toppings of the same type
+                boolean doneWithThisType = false;
+                while (!doneWithThisType) {
+                    // Display available toppings for selected type
+                    System.out.println("Available " + type + " toppings:");
+                    for (int i = 0; i < choices.length; i++) {
+                        System.out.println((i + 1) + ") " + choices[i]);
+                    }
 
-                boolean extra = false;
-                if (type.equals("MEAT") || type.equals("CHEESE")) {
+                    int toppingChoice;
+                    // Loop until the user enters a valid topping number
                     while (true) {
-                        String e = ConsoleHelper.promptForString("Extra? (Y/N)");
-                        if (e.equalsIgnoreCase("Y")) {
-                            extra = true;
-                            ToppingItem tempTopping = new ToppingItem(choices[choice - 1], type, true);
-                            double extraCost = s.getExtraPrice(tempTopping);
+                        // Prompt the user to select a topping by number
+                        toppingChoice = ConsoleHelper.promptForInt("Choose topping #: ");
+                        // Check if the entered number corresponds to a valid index in the available toppings array
+                        // Topping.isValidChoice handles the validation, returning true if valid
+                        if (Topping.isValidChoice(toppingChoice, choices))
+                            break;// Exit loop once a valid choice is made
 
-                            System.out.println("Added extra " + choices[choice - 1] + " (" + type + ") $"
-                                    + String.format("%.2f", extraCost));
-                            break;
-
-                        } else if (e.equalsIgnoreCase("N")) {
-                            extra = false;
-                            System.out.println("Added " + choices[choice - 1] + " (" + type + ")");
-                            break;
-                        }
-                        System.out.println("Invalid input! Please enter Y or N.");
+                        System.out.println("Invalid topping number! Try again.");
                     }
+
+                    boolean extra = false;
+
+                    // Extra option for MEAT or CHEESE
+                    if (type.equals("MEAT") || type.equals("CHEESE")) {
+                        while (true) {
+                            String extraInput = ConsoleHelper.promptForString("Extra? (Y/N): ");
+                            if (extraInput.equalsIgnoreCase("Y")) {
+                                extra = true;
+                                ToppingItem tempTopping = new ToppingItem(choices[toppingChoice - 1], type, true);
+                                double extraPrice = s.getExtraPrice(tempTopping); // Use Sandwich method
+                                System.out.println("Added extra " + choices[toppingChoice - 1] +
+                                        " (" + type + ") $" + String.format("%.2f", extraPrice));
+
+                                // Ask if user wants more of the same topping
+                                String more = ConsoleHelper.promptForString("Add MORE " + type + "? (Y/N): ");
+                                if (more.equalsIgnoreCase("Y")) {
+                                    continue; // Ask for Extra again for same topping
+                                } else {
+                                    break; // Done adding extras of this topping
+                                }
+
+                            } else if (extraInput.equalsIgnoreCase("N")) {
+                                System.out.println("Added " + choices[toppingChoice - 1] + " (" + type + ")");
+                                break; // Done with this topping
+                            } else {
+                                System.out.println("Invalid input! Please enter Y or N.");
+                            }
+                        }
+                    } else {
+                        // Print a confirmation message showing which topping and its category was added
+                        System.out.println("Added " + choices[toppingChoice - 1] + " (" + type + ")");
+                    }
+
+                    // Add topping to sandwich
+                    s.addTopping(new ToppingItem(choices[toppingChoice - 1], type, extra));
+
+                    // Ask if user wants to pick another topping of same type
+                    String pickAnother = ConsoleHelper.promptForString("Pick another " + type + "? (Y/N): ");
+                    if (pickAnother.equalsIgnoreCase("N")) doneWithThisType = true;
                 }
-                s.addTopping(new ToppingItem(choices[choice - 1], type, extra));
             }
-            return s;
+
+            return s; // Return the fully customized sandwich
         }
 
 
-        //------------------ Method to create a drink -------------------//
-        private static Product addDrink() {
-            System.out.println("\n--- Add Drink ---");
+//------------------ Method to create a drink -------------------//
+    private static Product addDrink() {
+        System.out.println("\n--- Add Drink ---");
 
-            // Show drink sizes and prices
-            System.out.println("Drink Sizes:");
-            System.out.println("S - $2.00");
-            System.out.println("M - $2.50");
-            System.out.println("L - $3.00");
+        // Show drink sizes and prices
+        System.out.println("Drink Sizes:");
+        System.out.println("S - $2.00");
+        System.out.println("M - $2.50");
+        System.out.println("L - $3.00");
 
-            // Validate drink size
-            String size;
-            boolean availableSize = false;
+        // Variable to store the user's drink size input
+        String size;
 
-            do {
-                size = ConsoleHelper.promptForString("Choose drink size (S/M/L): ").toUpperCase();
-                if (size.equals("S") || size.equals("M") || size.equals("L")) {
-                    availableSize = true;
-                } else {
-                    System.out.println("Invalid size. Please enter S, M, or L.");
-                }
-            } while (!availableSize);
+        // Flag to track if a valid size has been selected
+        boolean availableSize = false;
 
-            // Display flavors with numbers
-            System.out.println("\nAvailable Drink Flavors:");
-            String[] flavors = DrinkFlavor.FLAVORS;
-            for (int i = 0; i < flavors.length; i++) {
-                System.out.printf("%d - %s%n", i + 1, flavors[i]);
+        // Loop until the user inputs a valid size (S, M, or L)
+        do {
+            // Prompt user for drink size and convert to uppercase for consistency
+            size = ConsoleHelper.promptForString("Choose drink size (S/M/L): ").toUpperCase();
+
+            // Check if the input matches one of the allowed sizes
+            if (size.equals("S") || size.equals("M") || size.equals("L")) {
+                availableSize = true; // Valid input, exit loop
+            } else {
+                System.out.println("Invalid size. Please enter S, M, or L."); // Invalid input, retry
             }
+        } while (!availableSize);
 
-            int choice = 0;
-            boolean availableChoice = false;
-
-            // Validate number input for flavor
-            do {
-                choice = ConsoleHelper.promptForInt("Choose a drink flavor by number: ");
-                if (choice >= 1 && choice <= flavors.length) {
-                    availableChoice = true;
-                } else {
-                    System.out.println("Invalid choice. Please enter a number from the list.");
-                }
-            } while (!availableChoice);
-
-            String selectedFlavor = flavors[choice - 1]; // map number to flavor
-            System.out.println("You selected: " + selectedFlavor);
-            System.out.println("Your drink flavor has been saved!");
-            return new Drink(size, selectedFlavor);
+        // Display available drink flavors with numbered options for selection
+        System.out.println("\nAvailable Drink Flavors:");
+        String[] flavors = DrinkFlavor.FLAVORS; // Retrieve array of drink flavors
+        for (int i = 0; i < flavors.length; i++) {
+            System.out.printf("%d - %s%n", i + 1, flavors[i]); // Print index + 1 and flavor name
         }
 
+        // Variable to store user's numeric flavor choice
+        int choice = 0;
 
-        //----------------- Method to create chips ------------------//
-        private static Product addChips() {
+        // Flag to track if a valid flavor number has been selected
+        boolean availableChoice = false;
+
+        // Loop until the user enters a valid flavor number
+        do {
+            choice = ConsoleHelper.promptForInt("Choose a drink flavor by number: "); // Ask for numeric input
+
+            // Check if the user's numeric choice corresponds to a valid drink flavor
+            // DrinkFlavor.isValid(choice) returns true if the number is within the bounds of the flavors array
+            if (DrinkFlavor.isValid(choice)) {
+                availableChoice = true; // Valid number, exit loop
+            } else {
+                System.out.println("Invalid choice. Please enter a number from the list."); // Invalid, retry
+            }
+        } while (!availableChoice);
+
+        // Map the numeric choice to the actual flavor string
+        String selectedFlavor = flavors[choice - 1];
+
+        // Notify user of the selected flavor
+        System.out.println("You selected: " + selectedFlavor);
+        System.out.println("Your drink flavor has been saved!");
+
+        // Return a new Drink object with the chosen size and flavor
+        return new Drink(size, selectedFlavor);
+    }
+
+
+//----------------- Method to create chips ------------------//
+    private static Product addChips() {
             System.out.println("\n--- Add Chips ---");
 
-            // Display flavors with numbers
-            System.out.println("Available Chip Flavors (Price: $1.50 each):");
-            String[] flavors = ChipsFlavors.Flavors;
-            for (int i = 0; i < flavors.length; i++) {
-                System.out.printf("%d - %s%n", i + 1, flavors[i]);
-            }
+        System.out.println("Available Chip Flavors (Price: $1.50 each):");
 
-            int choice = 0;
-            boolean availableChoice = false;
+        // Get the array of available chip flavors from the ChipsFlavors class
+        String[] flavors = ChipsFlavors.Flavors;
 
-            // Loop until valid number is entered
-            do {
-                choice = ConsoleHelper.promptForInt("Choose a chip flavor by number: ");
-
-                if (choice >= 1 && choice <= flavors.length) {
-                    availableChoice = true;
-                } else {
-                    System.out.println("Invalid choice. Please enter a number from the list.");
-                }
-            } while (!availableChoice);
-
-            String selectedFlavor = flavors[choice - 1]; // map number to flavor
-            System.out.println("You selected: " + selectedFlavor);
-            System.out.println("Your chip flavor has been saved!");
-            return new Chips(selectedFlavor);
+        // Display each flavor with a corresponding number for user selection
+        for (int i = 0; i < flavors.length; i++) {
+            System.out.printf("%d - %s%n", i + 1, flavors[i]); // Print number and flavor name
         }
 
+        // Variable to store the user's numeric choice
+        int choice = 0;
 
-        //----------------- Method to create Signature Sandwich ------------------//
-        private static Product addSignatureSandwich() {
+        // Flag to track whether a valid choice has been made
+        boolean availableChoice = false;
+
+        // Loop until the user enters a valid number corresponding to a flavor
+        do {
+            // Prompt the user to select a chip flavor by its number
+            choice = ConsoleHelper.promptForInt("Choose a chip flavor by number: ");
+
+            // Check if the entered number is valid using the ChipsFlavors helper method
+            if (ChipsFlavors.isValid(choice)) {
+                availableChoice = true; // Valid choice, exit loop
+            } else {
+                System.out.println("Invalid choice. Please enter a number from the list."); // Invalid input, retry
+            }
+        } while (!availableChoice);
+
+        // Map the numeric choice to the actual flavor string
+        String selectedFlavor = flavors[choice - 1];
+
+        // Notify the user which flavor was selected
+        System.out.println("You selected: " + selectedFlavor);
+        System.out.println("Your chip flavor has been saved!");
+
+        // Return a new Chips object with the selected flavor
+        return new Chips(selectedFlavor);
+
+    }
+
+
+//----------------- Method to create Signature Sandwich ------------------//
+    private static Product addSignatureSandwich() {
             System.out.println("\n--- Signature Sandwich ---");
 
             int command;
@@ -305,11 +374,15 @@ private static Product addSandwich() {
                 System.out.println("2) Philly Cheese Steak");
 
                 command = ConsoleHelper.promptForInt("Please entre your choice (1 or 2)");
-                if (command == 1 || command == 2) break;
+                // Loop continues until the user enters a valid signature sandwich choice (1 or 2)
+                if (command == 1 || command == 2)
+                    break;// Exit the loop if the input is valid
                 System.out.println("Invalid choice! Please select 1 or 2.");
             }
+            // Declare a Sandwich variable to hold the selected signature sandwich
             Sandwich s;
-            if (command == 1) s = SignatureSandwich.BLT();
+            // Assign the appropriate signature sandwich based on the user's choice
+            if (command == 1) s = SignatureSandwich.BLT();// If 1, create a BLT sandwich
             else s = SignatureSandwich.PhillyCheeseSteak();
 
             System.out.println(" Signature sandwich has been selected!");
@@ -320,7 +393,8 @@ private static Product addSandwich() {
         }
 
 
-        private static void customizeToppings(Sandwich s) {
+//----------------- Method to create customizeToppings ------------------//
+    private static void customizeToppings(Sandwich s) {
             while (true) {
                 System.out.println("\nToppings customization menu:");
                 System.out.println("1) Add topping");
@@ -441,8 +515,8 @@ private static Product addSandwich() {
         }
 
 
-        //------------------ Checkout method to show summary and save receipt --------------------//
-        private static void checkout(Order o) {
+//------------------ Checkout method to show summary and save receipt --------------------//
+    private static void checkout(Order o) {
             //Get current date/time
             LocalDateTime now = LocalDateTime.now();
             //Format how the date/time will look on screen
@@ -467,4 +541,5 @@ private static Product addSandwich() {
             //If declined, cancel
             else System.out.println("Order cancelled! ");
         }
+
 }

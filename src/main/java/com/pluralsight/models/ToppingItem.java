@@ -15,15 +15,18 @@ public class ToppingItem {
 
     // Getter for topping name
     public String getName() {
-        return name; }
+        return name;
+    }
 
 
     public String getCategory() {
-        return category; }
+        return category;
+    }
 
     // Getter for extra flag
     public boolean isExtra() {
-        return extra; }
+        return extra;
+    }
 }
 
 

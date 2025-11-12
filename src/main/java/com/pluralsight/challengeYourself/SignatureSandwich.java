@@ -3,8 +3,8 @@ package com.pluralsight.challengeYourself;
 import com.pluralsight.models.Sandwich;
 import com.pluralsight.models.ToppingItem;
 
-// Abstract class to define preset "signature" sandwiches
-public abstract class SignatureSandwich {
+// class to define preset "signature" sandwiches
+public class SignatureSandwich {
 
     // -------- BLT Signature Sandwich --------
     public static Sandwich BLT() {

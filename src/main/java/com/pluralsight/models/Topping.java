@@ -12,12 +12,14 @@ public class Topping {
             "Salami",
             "Roast Beef",
             "Chicken",
-            "Bacon" };
+            "Bacon"
+    };
     public static String[] CHEESES = {
             "American",
             "Provolone",
             "Cheddar",
-            "Swiss" };
+            "Swiss"
+    };
     public static String[] REGULAR = {
             "Lettuce",
             "Peppers",
@@ -27,7 +29,8 @@ public class Topping {
             "Cucumbers",
             "Pickles",
             "Guacamole",
-            "Mushrooms" };
+            "Mushrooms"
+    };
     // Side toppings (optional)
     public static String[] SIDES = {
             "Au Jus",

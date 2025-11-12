@@ -38,7 +38,7 @@ public class Sandwich extends Product {
 
     // Calculate extra price for a single topping
     public double getExtraPrice(ToppingItem t) {
-        double price = 0.0;
+        double price = 0;
 
         if (t.getCategory().equals("MEAT")) {
             if (size.equals("4")) price = 0.50;
@@ -58,7 +58,7 @@ public class Sandwich extends Product {
     @Override
     public double getPrice() {
         //Start with a base sandwich price depending on size (in inches)
-        double base = 0;
+        double base;
         //Determine base price based on sandwich size
         switch (size) {
             case "4":

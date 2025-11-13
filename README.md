@@ -112,7 +112,8 @@ This design shows how loop control and program flow management can be used to:
 
 ## My Diagram
 
-<img width="1871" height="1155" alt="image" src="https://github.com/user-attachments/assets/28db96b3-1cbf-48aa-94dd-f7c7bd2ed56d" />
+<img width="1781" height="1140" alt="image" src="https://github.com/user-attachments/assets/cad54cc4-d43b-440d-9e88-9e5e01169b0f" />
+
 
 
 

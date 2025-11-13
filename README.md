@@ -1,6 +1,8 @@
 # Welcome to Not-Your-Average-Sandwich
 
-You can think of this project as your own personal sandwich shop system. It allows you to create fully customized sandwiches and drinks, track your selections, and see the final price before placing an order.
+You can think of this project as your own personal sandwich shop system. It allows you to create fully customized sandwiches and drinks, track your selections, and see the final price before placing an order. 
+Also you could shows one of ours Signature Sandwiched and custmoize it![SoExcited~GIF](https://github.com/user-attachments/assets/2a523680-6e8a-4583-b7fa-f5f703d04292)
+
 
 ----------
 # Whats inside the Home Menu & How it works 

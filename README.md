@@ -1,4 +1,5 @@
-# Welcome to Not-Your-Average-Sandwich
+# Welcome to Not-Your-Average-Sandwich 🥪🥪🥪🥪🥪🥪
+
 
 You can think of this project as your own personal sandwich shop system. It allows you to create fully customized sandwiches and drinks, track your selections, and see the final price before placing an order. 
 Also you could choose one of our Signature Sandwiches and custmoize it. 

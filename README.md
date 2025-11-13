@@ -88,6 +88,8 @@ You can:
 <img width="941" height="505" alt="image" src="https://github.com/user-attachments/assets/9d947f72-208c-4963-8805-24053a976d51" />
 
 ------------------------------------------------------------------------------------------------
+![DespicableMeGruGIF](https://github.com/user-attachments/assets/11d38ef5-3f76-4d29-a910-7494e6d91570)
+
 
 # Interesting Piece of Code: Cancel Order Feature
 

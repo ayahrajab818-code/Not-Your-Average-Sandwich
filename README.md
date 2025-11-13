@@ -32,7 +32,7 @@ You can:
 
 - Sandwich sizes:
   
-<img width="718" height="203" alt="image" src="https://github.com/user-attachments/assets/0b317c24-94d2-47d1-a105-83d9431f1c7f" />
+<img width="313" height="192" alt="image" src="https://github.com/user-attachments/assets/b9dd6084-c44f-4472-917c-5092a7a3b1ca" />
 
 - Toasted option:
   
@@ -65,7 +65,7 @@ You can:
 
 <img width="870" height="282" alt="image" src="https://github.com/user-attachments/assets/5859c442-159b-4f39-b773-32903e86af7b" />
 
-- Exaple of a recepit:
+- Example of a recepit:
   
 <img width="1426" height="704" alt="image" src="https://github.com/user-attachments/assets/a9678480-2e20-426c-a908-764f33242172" />
 
@@ -101,6 +101,10 @@ This design shows how loop control and program flow management can be used to:
 - Avoid restarting the program after canceling an order.
 
 - Make the user experience smoother and more professional.
+
+## My Diagram
+
+<img width="1485" height="1161" alt="image" src="https://github.com/user-attachments/assets/5210dd06-2d64-4d58-952d-e96db0a625af" />
 
 
 

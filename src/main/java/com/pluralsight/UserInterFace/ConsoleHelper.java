@@ -65,7 +65,6 @@ public class ConsoleHelper {
             for (int i = 0; i < BreadType.TYPES.length; i++) {
                 System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
             }
-
             breadChoice = ConsoleHelper.promptForInt("Select your bread #");
             if (BreadType.isValid(breadChoice)) break;
             System.out.println("Invalid choice! Please select an option above.");
@@ -74,17 +73,26 @@ public class ConsoleHelper {
         String bread = BreadType.TYPES[breadChoice - 1];
 
         // ======== SIZE SELECTION ========
-        System.out.println("\nSandwich Sizes:");
-        System.out.println("4\"  - $5.50");
-        System.out.println("8\"  - $7.00");
-        System.out.println("12\" - $8.50");
+        // Display available sizes with their prices
+        String[] sizes = SandwichSize.SIZES;      // use your SandwichSize class
+        double[] prices = {5.50, 7.00, 8.50};    // prices corresponding to sizes
 
-        String size;
-        while (true) {
-            size = ConsoleHelper.promptForString("Choose your size (4/8/12 inches)");
-            if (size.equals("4") || size.equals("8") || size.equals("12")) break;
-            System.out.println("Invalid size! Please enter only 4, 8, or 12.");
+        System.out.println("\nSandwich Sizes:");
+        for (int i = 0; i < sizes.length; i++) {
+            System.out.println((i + 1) + ") " + sizes[i] + "\" - $" + String.format("%.2f", prices[i]));
         }
+
+        int sizeChoice;
+        while (true) {
+            sizeChoice = ConsoleHelper.promptForInt("Select size #");
+            if (SandwichSize.isValid(sizeChoice)) break;
+            System.out.println("Invalid choice! Please select 1-" + sizes.length + ".");
+        }
+
+        String size = sizes[sizeChoice - 1];      // save selected size
+        double sizePrice = prices[sizeChoice - 1]; // optional, if needed for calculations
+
+        System.out.println("You selected: " + size + "\" - $" + String.format("%.2f", sizePrice));
 
         // ======== TOASTED OPTION ========
         boolean toasted;

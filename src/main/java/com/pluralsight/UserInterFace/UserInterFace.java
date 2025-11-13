@@ -11,71 +11,81 @@ import java.util.ArrayList;
 
 public class UserInterFace {
     
-        //--------- Main Menu here --------------//
+        //--------- Home Menu here --------------//
         public void display() {
+            // Home screen menu text
             String homeMenu = """
-                           ============================
-                                 Welcome to our 
-                              NOT-YOU-AVERAGE-SANDWICH
-                          ==============================
-                    //------------Main Menu------------//      
-                       What do you want to do?
-                       1) New Order
-                       0) Exit
-                    """;
-            while (true) {
+                       ============================
+                             Welcome to our 
+                          NOT-YOU-AVERAGE-SANDWICH
+                      ==============================
+                //------------Main Menu------------//      
+                   What do you want to do?
+                   1) New Order
+                   0) Exit
+                """;
+
+            while (true) { // Keep showing the home menu until the user exits
                 System.out.println(homeMenu);
+
+                // Prompt user for their main menu choice
                 String command = ConsoleHelper.promptForString("Enter command (1, 0)");
+
                 switch (command) {
-                    case "1" -> {//Start new order
-                        Order o = new Order();
-                        boolean running = true;
+                    case "1" -> { // Start a new order
+                        Order o = new Order(); // Create a new order object
+
+                        boolean running = true; // Controls the order menu loop
+
+                        // Order menu text
                         String orderMenu = """
-                                   //------------------------//        
-                                           Order Menu
-                                //------------------------//         
-                                   What would you like to add?
-                                   1) Add Sandwich
-                                   2) Add Drink
-                                   3) Add Chips
-                                   4) Checkout
-                                   5) Signature Sandwiches
-                                   0) Cancel Order
-                                """;
-                        while (running) {
+                           //------------------------//        
+                                   Order Menu
+                            //------------------------//         
+                               What would you like to add?
+                               1) Add Sandwich
+                               2) Add Drink
+                               3) Add Chips
+                               4) Checkout
+                               5) Signature Sandwiches
+                               0) Cancel Order
+                            """;
+
+                        while (running) { // Keep showing the order menu until user cancels or checks out
                             System.out.println(orderMenu);
+
+                            // Prompt for choice in the order menu
                             String c = ConsoleHelper.promptForString("Enter command (1, 2, 3, 4, 5, 0)").toUpperCase();
+
                             switch (c) {
-                                case "1" -> o.add(addSandwich());
-                                case "2" -> o.add(addDrink());
-                                case "3" -> o.add(addChips());
-                                case "4" -> {
+                                case "1" -> o.add(addSandwich()); // Add a sandwich
+                                case "2" -> o.add(addDrink());    // Add a drink
+                                case "3" -> o.add(addChips());    // Add chips
+                                case "4" -> {                     // Checkout
                                     checkout(o);
-                                    running = false;
+                                    running = false; // Exit order menu after checkout
                                 }
-                                case "5" -> {
-                                    o.add(addSignatureSandwich());
+                                case "5" -> o.add(addSignatureSandwich()); // Add a signature sandwich
+                                case "0" -> { // Cancel the order
+                                    System.out.println("Order canceled. Returning to home screen...");
+                                    running = false; // Stop order menu loop
+                                    // Do NOT return or exit program just break out to home menu
                                 }
-                                case "0" -> {
-                                    System.out.println("Exiting application.");
-                                    return;
-                                }
-                                default -> System.out.println("INVALID COMMAND! Please try again.");
+                                default -> System.out.println("INVALID COMMAND! Please try again."); // Handle invalid input
                             }
                         }
                     }
-                    case "0" -> {
-                        System.out.println("Exiting application..."); // Notify user
-                        return; // Stop program
+
+                    case "0" -> { // Exit the whole application
+                        System.out.println("Exiting application Thank you for ordering at Not-Your-Average-Sandwich");
+                        return; // End the program completely
                     }
-                    //Any other input
-                    default ->
-                            System.out.println("Invalid choice! Please enter 1 for New Order or 0 to Exit."); //Invalid input
+
+                    default -> // Invalid input at home screen
+                            System.out.println("Invalid choice! Please enter 1 for New Order or 0 to Exit.");
                 }
             }
         }
-
-
 //---------------------- Method to create a sandwich with user input -------------------//
     private static Product addSandwich() {
         Sandwich s = ConsoleHelper.buildSandwich();

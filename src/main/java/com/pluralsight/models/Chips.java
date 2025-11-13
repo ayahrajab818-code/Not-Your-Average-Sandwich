@@ -7,10 +7,13 @@ public class Chips extends Product {
         this.flavor = flavor;
     }
     //Chips price
+
+
     @Override
     public double getPrice() {
         return 1.50;
     }
+
 
     //Return description for receipt
     @Override

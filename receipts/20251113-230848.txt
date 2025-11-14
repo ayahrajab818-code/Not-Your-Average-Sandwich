@@ -1,0 +1,17 @@
+===== Not-Your-Average-Sandwich =====
+Date: 11/13/2025 11:08:48 PM
+================================
+
+---- Sandwiches ----
+1. 4" White (Toasted: Yes)
+   Toppings: Steak (extra) +$0.50, Steak, Mayo
+   Price: $7.00
+2. 8" White (Toasted: Yes)
+   Toppings: Cheddar, Lettuce, Tomato, Ranch, Au Jus
+   Price: $8.50
+
+================================
+Total: $19.00
+================================
+
+Thank you for choosing Not-Your-Average-Sandwich!

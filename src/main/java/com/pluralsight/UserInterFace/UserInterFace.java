@@ -11,7 +11,13 @@ import java.util.ArrayList;
 
 
 public class UserInterFace {
-         // Cyan text
+    // Public: can be accessed from any other class
+    // Static: belongs to the class itself, no object needed to access it
+    // Final: constant, value cannot be changed once assigned
+    // String: type of variable
+    // LIGHT_PURPLE: name of the constant
+    //"\u001B the Escape character. It signals the terminal that a formatting command is coming.
+    // [95m": The control code for light purple text.
     public static final String LIGHT_PURPLE = "\u001B[95m";  // Light purple / bright magenta
     public static final String RESET = "\u001B[0m";          // Reset to default color
         //--------- Home Menu here --------------//

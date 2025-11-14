@@ -9,12 +9,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
 public class UserInterFace {
-    
+         // Cyan text
+    public static final String LIGHT_PURPLE = "\u001B[95m";  // Light purple / bright magenta
+    public static final String RESET = "\u001B[0m";          // Reset to default color
         //--------- Home Menu here --------------//
         public void display() {
             // Home screen menu text
-            String homeMenu = """
+            String homeMenu =LIGHT_PURPLE + """
                        ============================
                              Welcome to our 
                           NOT-YOU-AVERAGE-SANDWICH
@@ -23,7 +26,7 @@ public class UserInterFace {
                    What do you want to do?
                    1) New Order
                    0) Exit
-                """;
+                """ + RESET;
 
             while (true) { // Keep showing the home menu until the user exits
                 System.out.println(homeMenu);
@@ -38,7 +41,7 @@ public class UserInterFace {
                         boolean running = true; // Controls the order menu loop
 
                         // Order menu text
-                        String orderMenu = """
+                        String orderMenu = LIGHT_PURPLE +"""
                            //------------------------//        
                                    Order Menu
                             //------------------------//         
@@ -49,7 +52,7 @@ public class UserInterFace {
                                4) Checkout
                                5) Signature Sandwiches
                                0) Cancel Order
-                            """;
+                            """ +RESET;
 
                         while (running) { // Keep showing the order menu until user cancels or checks out
                             System.out.println(orderMenu);
@@ -95,7 +98,7 @@ public class UserInterFace {
 
 //------------------ Method to create a drink -------------------//
     private static Product addDrink() {
-        System.out.println("\n--- Add Drink ---"); // Header for the drink section
+        System.out.println(LIGHT_PURPLE +"\n--- Add Drink ---"+RESET); // Header for the drink section
 
         // ======== DRINK SIZE SELECTION (NUMBERED MENU) ========
         System.out.println("\nDrink Sizes:"); // Print the menu header
@@ -113,7 +116,7 @@ public class UserInterFace {
         // Loop until user selects a valid number
         while (true) {
             sizeChoice = ConsoleHelper.promptForInt("Select drink size #"); // Ask user for number
-            if (sizeChoice >= 1 && sizeChoice <= sizes.length) break; // Valid selection, exit loop
+            if (DrinkFlavor.isValid(sizeChoice)) break; // Valid selection, exit loop
             System.out.println("Invalid choice! Please select 1-" + sizes.length + "."); // Invalid input, retry
         }
 
@@ -123,7 +126,7 @@ public class UserInterFace {
         // Display the user's selected size and price
 
         // ======== DRINK FLAVOR SELECTION ========
-        System.out.println("\nAvailable Drink Flavors:"); // Header for flavor menu
+        System.out.println(LIGHT_PURPLE+"\nAvailable Drink Flavors:"+RESET); // Header for flavor menu
         String[] flavors = DrinkFlavor.FLAVORS; // Retrieve array of available drink flavors
 
         // Display numbered flavor menu
@@ -132,7 +135,7 @@ public class UserInterFace {
             // Print number and flavor name
         }
 
-        int choice = 0; // Variable to store user's numeric flavor choice
+        int choice;
         boolean availableChoice = false; // Flag to validate selection
 
         // Loop until a valid flavor number is selected
@@ -157,7 +160,7 @@ public class UserInterFace {
 
 //----------------- Method to create chips ------------------//
     private static Product addChips() {
-            System.out.println("\n--- Add Chips ---");
+            System.out.println(LIGHT_PURPLE+ "\n--- Add Chips ---"+RESET);
 
         System.out.println("Available Chip Flavors (Price: $1.50 each):");
 
@@ -170,7 +173,7 @@ public class UserInterFace {
         }
 
         // Variable to store the user's numeric choice
-        int choice = 0;
+        int choice;
 
         // Flag to track whether a valid choice has been made
         boolean availableChoice = false;
@@ -203,13 +206,13 @@ public class UserInterFace {
 
 //----------------- Method to create Signature Sandwich ------------------//
     private static Product addSignatureSandwich() {
-            System.out.println("\n--- Signature Sandwich ---");
+            System.out.println(LIGHT_PURPLE +"\n--- Signature Sandwich ---"+RESET);
 
             int command;
             while (true) {
-                System.out.println("Choose a signature sandwich");
-                System.out.println("1) BLT");
-                System.out.println("2) Philly Cheese Steak");
+                System.out.println(LIGHT_PURPLE +"Choose a signature sandwich"+RESET);
+                System.out.println(LIGHT_PURPLE +"1) BLT"+RESET);
+                System.out.println(LIGHT_PURPLE +"2) Philly Cheese Steak"+RESET);
 
                 command = ConsoleHelper.promptForInt("Please entre your choice (1 or 2)");
                 // Loop continues until the user enters a valid signature sandwich choice (1 or 2)
@@ -234,10 +237,10 @@ public class UserInterFace {
 //----------------- Method to create customizeToppings ------------------//
     private static void customizeToppings(Sandwich s) {
             while (true) {
-                System.out.println("\nToppings customization menu:");
-                System.out.println("1) Add topping");
-                System.out.println("2) Remove topping");
-                System.out.println("3) Done");
+                System.out.println(LIGHT_PURPLE +"\nToppings customization menu:"+ RESET);
+                System.out.println(LIGHT_PURPLE +"1) Add topping"+ RESET);
+                System.out.println(LIGHT_PURPLE +"2) Remove topping"+RESET);
+                System.out.println(LIGHT_PURPLE +"3) Done"+RESET);
                 // Prompt user to choose an action (1 = Add, 2 = Remove, 3 = Done)
                 int action = ConsoleHelper.promptForInt("Select action #: ");
 
@@ -380,7 +383,7 @@ public class UserInterFace {
             //Format how the date/time will look on screen
             DateTimeFormatter displayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a");
 
-            System.out.println("\n=== ORDER SUMMARY ===");
+            System.out.println(LIGHT_PURPLE +"\n=== ORDER SUMMARY ==="+ RESET);
             System.out.println("Order Date/Time " + now.format(displayFormat));//Show formatted date/time in console
 
             //Loop through all entry and print description

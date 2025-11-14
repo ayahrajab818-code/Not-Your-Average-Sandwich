@@ -12,5 +12,5 @@ public class SandwichSize {
         // Valid if choice is greater than or equal to 1 AND less than or equal to the number of bread types
         return choice >= 1 && choice <= SIZES.length;
     }
-    
+
 }

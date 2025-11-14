@@ -4,6 +4,7 @@ import com.pluralsight.models.*;
 
 import java.util.Scanner;
 
+
 public class ConsoleHelper {
     private static Scanner scanner = new Scanner(System.in);
 
@@ -58,206 +59,187 @@ public class ConsoleHelper {
     }
 
     public static Sandwich buildSandwich() {
+
         // ======== BREAD SELECTION ========
         int breadChoice; // Variable to store the user's bread selection
-        while (true) {
-            System.out.println("Please choose a bread type:");
-            for (int i = 0; i < BreadType.TYPES.length; i++) {
-                System.out.println((i + 1) + ") " + BreadType.TYPES[i]);
+        while (true) { // Loop until the user enters a valid bread choice
+            System.out.println("Please choose a bread type:"); // Prompt user to choose bread
+            for (int i = 0; i < BreadType.TYPES.length; i++) { // Loop through all bread types
+                System.out.println((i + 1) + ") " + BreadType.TYPES[i]); // Display bread options numbered
             }
-            breadChoice = ConsoleHelper.promptForInt("Select your bread #");
-            if (BreadType.isValid(breadChoice)) break;
-            System.out.println("Invalid choice! Please select an option above.");
+            breadChoice = ConsoleHelper.promptForInt("Select your bread #"); // Ask user to enter a bread number
+            if (BreadType.isValid(breadChoice)) break; // Exit loop if the selected bread is valid
+            System.out.println("Invalid choice! Please select an option above."); // Display error for invalid input
         }
 
-        String bread = BreadType.TYPES[breadChoice - 1];
+        String bread = BreadType.TYPES[breadChoice - 1]; // Store the selected bread type
 
         // ======== SIZE SELECTION ========
-        // Display available sizes with their prices
-        String[] sizes = SandwichSize.SIZES;      // use your SandwichSize class
-        double[] prices = {5.50, 7.00, 8.50};    // prices corresponding to sizes
+        String[] sizes = SandwichSize.SIZES; // Get list of available sandwich sizes
+        double[] prices = {5.50, 7.00, 8.50}; // Prices corresponding to each sandwich size
 
-        System.out.println("\nSandwich Sizes:");
-        for (int i = 0; i < sizes.length; i++) {
-            System.out.println((i + 1) + ") " + sizes[i] + "\" - $" + String.format("%.2f", prices[i]));
+        System.out.println("\nSandwich Sizes:"); // Display sandwich size header
+        for (int i = 0; i < sizes.length; i++) { // Loop through sizes
+            System.out.println((i + 1) + ") " + sizes[i] + "\" - $" + String.format("%.2f", prices[i])); // Display each size with price
         }
 
-        int sizeChoice;
-        while (true) {
-            sizeChoice = ConsoleHelper.promptForInt("Select size #");
-            if (SandwichSize.isValid(sizeChoice)) break;
-            System.out.println("Invalid choice! Please select 1-" + sizes.length + ".");
+        int sizeChoice; // Variable to hold user's chosen size
+        while (true) { // Repeat until user selects valid size
+            sizeChoice = ConsoleHelper.promptForInt("Select size #"); // Ask user for size number
+            if (SandwichSize.isValid(sizeChoice)) break; // Exit loop if valid choice
+            System.out.println("Invalid choice! Please select 1-" + sizes.length + "."); // Show error message
         }
 
-        String size = sizes[sizeChoice - 1];      // save selected size
-        double sizePrice = prices[sizeChoice - 1]; // optional, if needed for calculations
-
-        System.out.println("You selected: " + size + "\" - $" + String.format("%.2f", sizePrice));
+        String size = sizes[sizeChoice - 1]; // Store the chosen size (e.g. 4, 8, or 12 inches)
+        double sizePrice = prices[sizeChoice - 1]; // Get price of chosen size
+        System.out.println("You selected: " + size + "\" - $" + String.format("%.2f", sizePrice)); // Confirm size and price to user
 
         // ======== TOASTED OPTION ========
-        boolean toasted;
-        while (true) {
-            String t = ConsoleHelper.promptForString("Toasted? (Y/N)");
-            if (t.equalsIgnoreCase("Y")) {
-                toasted = true;
-                break;
-            } else if (t.equalsIgnoreCase("N")) {
-                toasted = false;
-                break;
+        boolean toasted; // Boolean to store whether sandwich should be toasted
+        while (true) { // Repeat until valid Y/N input
+            String t = ConsoleHelper.promptForString("Toasted? (Y/N)"); // Ask if toasted
+            if (t.equalsIgnoreCase("Y")) { // If user enters Y
+                toasted = true; // Set toasted to true
+                break; // Exit loop
+            } else if (t.equalsIgnoreCase("N")) { // If user enters N
+                toasted = false; // Set toasted to false
+                break; // Exit loop
             }
-            System.out.println("Invalid input! Please enter Y or N.");
+            System.out.println("Invalid input! Please enter Y or N."); // Handle invalid input
         }
 
-        Sandwich s = new Sandwich(bread, size, toasted); // Create sandwich object
+        Sandwich s = new Sandwich(bread, size, toasted); // Create new Sandwich object using user's selections
 
         // ======== SHOW EXTRA PRICING ========
-        System.out.println("\n=== Extra Pricing ===");
-        System.out.println("Extra Meat:");
-        System.out.println("4\" = $0.50   | 8\" = $1.00   | 12\" = $1.50");
-        System.out.println("Extra Cheese:");
-        System.out.println("4\" = $0.30   | 8\" = $0.60   | 12\" = $0.90\n");
+        System.out.println(LIGHT_PURPLE +"\n=== Extra Pricing ==="+ RESET); // Display header for extra pricing section
+        System.out.println(LIGHT_PURPLE +"Extra Meat:"); // Label for extra meat
+        System.out.println(LIGHT_PURPLE +"4\" = $0.50   | 8\" = $1.00   | 12\" = $1.50"+ RESET); // Show extra meat pricing
+        System.out.println(LIGHT_PURPLE +"Extra Cheese:"); // Label for extra cheese
+        System.out.println(LIGHT_PURPLE + "4\" = $0.30   | 8\" = $0.60   | 12\" = $0.90\n"+ RESET); // Show extra cheese pricing
 
         // ======== TOPPINGS SELECTION ========
-        while (true) {
-            System.out.println("\nChoose topping type:");
+        while (true) { // Loop for topping category selection
+            System.out.println("\nChoose topping type:"); // Display topping type menu
             System.out.println("1) MEAT");
             System.out.println("2) CHEESE");
             System.out.println("3) REGULAR");
             System.out.println("4) SAUCE");
             System.out.println("5) SIDE");
-            System.out.println("6) DONE");
+            System.out.println("6) DONE"); // Option to finish toppings
 
-            int typeChoice = ConsoleHelper.promptForInt("Select type #");
-            if (typeChoice == 6) {
-                System.out.println("Finished adding toppings.");
-                break;
+            int typeChoice = ConsoleHelper.promptForInt("Select type #"); // Ask for topping type number
+            if (typeChoice == 6) { // If user selects DONE
+                System.out.println("Finished adding toppings."); // Show completion message
+                break; // Exit toppings loop
             }
 
-            String type;
-            String[] choices;
+            String type; // To hold current topping type
+            String[] choices; // To hold available toppings for chosen type
 
-            switch (typeChoice) {
-                case 1 -> {
-                    type = "MEAT";
-                    choices = Topping.MEATS;
-                }
-                case 2 -> {
-                    type = "CHEESE";
-                    choices = Topping.CHEESES;
-                }
-                case 3 -> {
-                    type = "REGULAR";
-                    choices = Topping.REGULAR;
-                }
-                case 4 -> {
-                    type = "SAUCE";
-                    choices = Topping.SAUCES;
-                }
-                case 5 -> {
-                    type = "SIDE";
-                    choices = Topping.SIDES;
-                }
-                default -> {
+            switch (typeChoice) { // Determine topping category based on user choice
+                case 1 -> { type = "MEAT"; choices = Topping.MEATS; } // Meat toppings
+                case 2 -> { type = "CHEESE"; choices = Topping.CHEESES; } // Cheese toppings
+                case 3 -> { type = "REGULAR"; choices = Topping.REGULAR; } // Regular toppings (e.g. lettuce)
+                case 4 -> { type = "SAUCE"; choices = Topping.SAUCES; } // Sauce toppings
+                case 5 -> { type = "SIDE"; choices = Topping.SIDES; } // Side toppings
+                default -> { // Handle invalid type number
                     System.out.println("Invalid choice! Please select 1–6.");
-                    continue;
+                    continue; // Skip rest and go back to top of loop
                 }
             }
 
-            // Loop for toppings within same type
-            boolean doneWithThisType = false;
+            boolean doneWithThisType = false; // Flag to track when user finishes one topping type
 
-            while (!doneWithThisType) {
-                System.out.println("\nAvailable " + type + " toppings:");
-                for (int i = 0; i < choices.length; i++) {
-                    System.out.println((i + 1) + ") " + choices[i]);
+            while (!doneWithThisType) { // Loop for selecting toppings within the same type
+                System.out.println("\nAvailable " + type + " toppings:"); // Display available toppings of this type
+                for (int i = 0; i < choices.length; i++) { // Loop through toppings
+                    System.out.println((i + 1) + ") " + choices[i]); // Display each topping option
                 }
 
-                int toppingChoice = ConsoleHelper.promptForInt("Choose topping #");
-                if (!Topping.isValidChoice(toppingChoice, choices)) {
-                    System.out.println("Invalid topping number! Try again.");
-                    continue;
+                int toppingChoice = ConsoleHelper.promptForInt("Choose topping #"); // Ask for topping number
+                if (!Topping.isValidChoice(toppingChoice, choices)) { // Validate topping input
+                    System.out.println("Invalid topping number! Try again."); // Show error message
+                    continue; // Retry same type
                 }
 
-                String selectedTopping = choices[toppingChoice - 1];
-                boolean extra = false;
+                String selectedTopping = choices[toppingChoice - 1]; // Store selected topping
+                boolean extra = false; // Track whether user wants extra of this topping
 
-                if (type.equals("MEAT") || type.equals("CHEESE")) {
-                    // Handle extra option for meat/cheese
-                    while (true) {
-                        String extraInput = ConsoleHelper.promptForString("Extra? (Y/N)");
-                        if (extraInput.equalsIgnoreCase("Y")) {
-                            extra = true;
-                            ToppingItem temp = new ToppingItem(selectedTopping, type, true);
-                            double extraPrice = s.getExtraPrice(temp);
+                if (type.equals("MEAT") || type.equals("CHEESE")) { // Handle extra option for meats/cheeses
+                    while (true) { // Ask repeatedly until valid input
+                        String extraInput = ConsoleHelper.promptForString("Extra? (Y/N)"); // Ask if extra
+                        if (extraInput.equalsIgnoreCase("Y")) { // If extra
+                            extra = true; // Mark as extra
+                            ToppingItem temp = new ToppingItem(selectedTopping, type, true); // Create temp topping for price
+                            double extraPrice = s.getExtraPrice(temp); // Get price for extra portion
                             System.out.println("Added extra " + selectedTopping + " (" + type + ") $" +
-                                    String.format("%.2f", extraPrice));
-                            break;
-                        } else if (extraInput.equalsIgnoreCase("N")) {
-                            System.out.println("Added " + selectedTopping + " (" + type + ")");
-                            break;
+                                    String.format("%.2f", extraPrice)); // Show confirmation with extra cost
+                            break; // Exit loop
+                        } else if (extraInput.equalsIgnoreCase("N")) { // If not extra
+                            System.out.println("Added " + selectedTopping + " (" + type + ")"); // Confirm added
+                            break; // Exit loop
                         } else {
-                            System.out.println("Invalid input! Please enter Y or N.");
+                            System.out.println("Invalid input! Please enter Y or N."); // Error for invalid input
                         }
                     }
-                    s.addTopping(new ToppingItem(selectedTopping, type, extra));
+                    s.addTopping(new ToppingItem(selectedTopping, type, extra)); // Add topping to sandwich object
 
-                } else {
-                    // Handle regular, sauce, or side toppings
-                    System.out.println("\nWould you like to add " + selectedTopping + "?");
+                } else { // For regular, sauce, or side toppings
+                    System.out.println("\nWould you like to add " + selectedTopping + "?"); // Confirm add
                     System.out.println("1) Yes");
                     System.out.println("2) No");
 
-                    int addChoice = ConsoleHelper.promptForInt("Enter your choice (1-2): ");
+                    int addChoice = ConsoleHelper.promptForInt("Enter your choice (1-2): "); // Ask to add or skip
 
-                    if (addChoice == 1) {
-                        s.addTopping(new ToppingItem(selectedTopping, type, false));
-                        System.out.println(selectedTopping + " added successfully! (Free topping)");
+                    if (addChoice == 1) { // If yes
+                        s.addTopping(new ToppingItem(selectedTopping, type, false)); // Add topping without extra charge
+                        System.out.println(selectedTopping + " added successfully! (Free topping)"); // Confirmation message
 
-                        // Ask if they want to add another topping
-                        System.out.println("\nWould you like to add another topping?");
+                        System.out.println("\nWould you like to add another topping?"); // Ask to continue same type
                         System.out.println("1) Yes");
                         System.out.println("2) No");
 
-                        int another = ConsoleHelper.promptForInt("Enter your choice (1-2): ");
+                        int another = ConsoleHelper.promptForInt("Enter your choice (1-2): "); // Ask for next action
 
-                        if (another == 1) {
-                            // Go back immediately to choose another topping
-                            break; // exits this inner prompt and shows topping selection again
-                        } else if (another == 2) {
-                            System.out.println("Exiting to main topping menu...");
-                            doneWithThisType = true; // exit current topping type loop
+                        if (another == 1) { // If user wants to add another topping
+                            break; // Go back to same topping menu
+                        } else if (another == 2) { // If done with this type
+                            System.out.println("Exiting to main topping menu..."); // Inform user
+                            doneWithThisType = true; // End this type loop
                         } else {
-                            System.out.println("Invalid choice! Please enter 1 or 2.");
+                            System.out.println("Invalid choice! Please enter 1 or 2."); // Invalid input message
                         }
 
-                    } else if (addChoice == 2) {
-                        System.out.println("Skipping this topping. Choose another topping.");
-                        continue; // go back to topping selection
+                    } else if (addChoice == 2) { // If user skips topping
+                        System.out.println("Skipping this topping. Choose another topping."); // Notify skip
+                        continue; // Go back to topping menu
                     } else {
-                        System.out.println("Invalid choice! Please enter 1 or 2.");
+                        System.out.println("Invalid choice! Please enter 1 or 2."); // Handle invalid input
                     }
-
                 }
 
-                // Ask to continue or exit this topping type
-                if (type.equals("MEAT") || type.equals("CHEESE")) {
-                    String pickAnother = ConsoleHelper.promptForString("Pick another " + type + "? (Y/N)");
-                    if (pickAnother.equalsIgnoreCase("N")) doneWithThisType = true;
+                if (type.equals("MEAT") || type.equals("CHEESE")) { // After adding meat/cheese
+                    String pickAnother = ConsoleHelper.promptForString("Pick another " + type + "? (Y/N)"); // Ask to add more
+                    if (pickAnother.equalsIgnoreCase("N")) doneWithThisType = true; // Exit if not adding more
                 }
             }
         }
 
         // ======== FINAL SUMMARY ========
-        double finalPrice = s.getPrice();
-        System.out.println("\n========================================");
-        System.out.println("     SANDWICH PLACED SUCCESSFULLY!");
-        System.out.println("========================================");
-        System.out.println(s.getDescription());
-        System.out.println("\nTotal Sandwich Price: $" + String.format("%.2f", finalPrice));
-        System.out.println("========================================\n");
+        double finalPrice = s.getPrice(); // Calculate total price for sandwich
+        System.out.println(LIGHT_PURPLE +"\n========================================"); // Formatting line
+        System.out.println(LIGHT_PURPLE +"     SANDWICH PLACED SUCCESSFULLY!"); // Success message
+        System.out.println(LIGHT_PURPLE +"========================================"); // Formatting line
+        System.out.println(s.getDescription()); // Print sandwich details (bread, size, toppings)
+        System.out.println("\nTotal Sandwich Price: $" + String.format("%.2f", finalPrice)); // Display final cost
+        System.out.println("========================================\n"); // End of order summary
 
-        return s;
+        return s; // Return the completed sandwich object
+
     }
+    // ANSI Color Codes
+    public static final String LIGHT_PURPLE = "\u001B[95m";  // Light purple / bright magenta
+    public static final String RESET = "\u001B[0m";
 
 
 }

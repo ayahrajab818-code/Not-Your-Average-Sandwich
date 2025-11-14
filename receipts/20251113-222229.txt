@@ -1,0 +1,14 @@
+===== Not-Your-Average-Sandwich =====
+Date: 11/13/2025 10:22:29 PM
+================================
+
+---- Sandwiches ----
+1. 4" White (Toasted: Yes)
+   Toppings: Steak
+   Price: $6.50
+
+================================
+Total: $6.50
+================================
+
+Thank you for choosing Not-Your-Average-Sandwich!

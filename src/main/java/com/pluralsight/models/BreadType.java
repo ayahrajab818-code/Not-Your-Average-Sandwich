@@ -3,6 +3,7 @@ package com.pluralsight.models;
  * This class stores all bread options for sandwiches.
  */
 public class BreadType {
+    // A class-level (static) array that stores all available types/options for this category
     public static String[] TYPES = {
             "White",
             "Wheat",

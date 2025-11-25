@@ -1,9 +1,7 @@
 package com.pluralsight.orders;
 
 
-import com.pluralsight.models.Product;
-import com.pluralsight.models.Sandwich;
-import com.pluralsight.models.ToppingItem;
+import com.pluralsight.models.*;
 
 import java.io.FileWriter;
 import java.time.LocalDateTime;
@@ -48,6 +46,21 @@ public class ReceiptFile {
                     // Write price
                     w.write("   Price: $" + String.format("%.2f", s.getPrice()) + "\n");
                     sandwichCount++;
+                }
+
+                // Drink printing
+                else if (p instanceof Drink d) {
+                    w.write("\n---- Drink ----\n");
+                    w.write("Size: " + d.getSize() + "\n");
+                    w.write("Flavor: " + d.getFlavor() + "\n");
+                    w.write("Price: $" + String.format("%.2f", d.getPrice()) + "\n");
+                }
+
+                // Chips printing
+                else if (p instanceof Chips c) {
+                    w.write("\n---- Chips ----\n");
+                    w.write("Flavor: " + c.getFlavor() + "\n");
+                    w.write("Price: $" + String.format("%.2f", c.getPrice()) + "\n");
                 }
             }
 

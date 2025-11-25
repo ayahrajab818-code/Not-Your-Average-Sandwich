@@ -11,6 +11,14 @@ public class Drink extends Product {
 
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
     //Get price based on size
     @Override
     public double getPrice() {

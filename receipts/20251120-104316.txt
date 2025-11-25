@@ -1,11 +1,20 @@
 ===== Not-Your-Average-Sandwich =====
-Date: 11/13/2025 10:21:19 PM
+Date: 11/20/2025 10:43:16 AM
 ================================
 
 ---- Sandwiches ----
 
+---- Drink ----
+Size: S
+Flavor: Coke
+Price: $2.00
+
+---- Chips ----
+Flavor: Salt & Vinegar
+Price: $1.50
+
 ================================
-Total: $0.00
+Total: $3.50
 ================================
 
 Thank you for choosing Not-Your-Average-Sandwich!
